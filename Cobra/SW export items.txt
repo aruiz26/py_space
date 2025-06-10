@@ -1,0 +1,5 @@
+List of items exported by SolidWorks
+____________________________________
+cobra_assem_4_2_shapes
+cobra_assem_4_2.py
+
