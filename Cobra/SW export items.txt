@@ -1,5 +1,45 @@
 List of items exported by SolidWorks
-____________________________________
+------------------------------------
 cobra_assem_4_2_shapes
 cobra_assem_4_2.py
+
+
+
+------------------------------------
+Bodies (13)
+------------------------------------
+hub_assem-3
+arm_assembly-2
+hub_assem-1
+wheel_grouser-2
+Assem6^cobra_assem_4_2-1
+wheel_grouser-3
+wheel_grouser-4
+wheel_grouser-1
+arm_assembly-3
+arm_assembly-4
+hub_assem-2
+arm_assembly-1
+hub_assem-4
+
+
+------------------------------------
+Markers (16), from arm to hub, from hub to wheel
+------------------------------------
+steer_arm_1
+steer_arm_2
+steer_arm_3
+steer_arm_4
+steer_hub_1
+steer_hub_2
+steer_hub_3
+steer_hub_4
+drive_hub_1
+drive_hub_2
+drive_hub_3
+drive_hub_4
+drive_wheel_1
+drive_wheel_2
+drive_wheel_3
+drive_wheel_4
 

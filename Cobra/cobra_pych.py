@@ -1,102 +1,94 @@
+# based of spiderRobot example
+
 import pychrono.core as chrono
-import pychrono.vehicle as veh
 import pychrono.irrlicht as chronoirr
 
 
-# Create Chrono system
-sys = chrono.ChSystemSMC()
-sys.SetCollisionSystemType(chrono.ChCollisionSystem.Type_BULLET)
-sys.SetGravitationalAcceleration(chrono.ChVector3d(0, -9.81, 0))
-chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.0025)
-chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.0025)
+print("Load Cobra SW")
+
+# Utility class to use ChLinkMotorRotationAngle given the markers from the CAD
+class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
+    def __init__(self):
+        super().__init__()
+        self.bodylist = []
+
+    def Initialize(self, mark1, mark2):
+        body1 = mark1.GetBody()
+        body2 = mark2.GetBody()
+        self.bodylist.append([body1, body2])
+        frame = mark1.GetAbsFrame()
+        super().Initialize(body1, body2, frame)
+
+    def SetMotorFunction(self, rotfun):
+        super().SetAngleFunction(rotfun)
+
+# ---------------------------------------------------------------------
+#
+#  Create the simulation system and add items
+#
+ 
+mysystem = chrono.ChSystemNSC()
+mysystem.SetCollisionSystemType(chrono.ChCollisionSystem.Type_BULLET)
+chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
+chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
+
+# Import model items from Solidworks and add to system 
+parts = chrono.ImportSolidWorksSystem('cobra_assem_4_2.py')
+ 
+for ib in parts:
+    mysystem.Add(ib)
+    print(ib)
+    
+# Retrieve objects from their name as saved from the SolidWorks interface
+bbody    = mysystem.SearchBody('Assem6^cobra_assem_4_2-1')
+bbody.SetFixed(False)
+# FrontRight Asembly
+b1arm = mysystem.SearchBody('arm_assembly-2')
+b1hub = mysystem.SearchBody('hub_assem-1')
+b1wheel = mysystem.SearchBody('wheel_grouser-1')
 
 
-chrono.SetChronoDataPath(chrono.GetChronoDataPath())
 
 
-# Import your exported assembly
-exported_items = []
-from cobra_assem_4_2 import exported_items  # replace with your exported file name
-for item in exported_items:
-    sys.Add(item)
 
 
-# Optional: name and identify wheels/steering links
-FL_wheel = sys.SearchBody("wheel_grouser-1")
-
-RL_wheel = sys.SearchBody("wheel_grouser-3")
-# RL_wheel = sys.SearchBody("wheel_grouser-3")
-# RL_wheel = sys.SearchBody("wheel_grouser-3")
-FL_arm = sys.SearchBody("arm_assembly-1")
-RL_arm = sys.SearchBody("hub_assem-3")
-steering_link_FL = sys.SearchLink("Concentric6")
-
-print(FL_wheel)
-print(steering_link_FL)
-
-# Create a floor
-mymat = chrono.ChContactMaterialSMC()
-mymat.SetRestitution(0.0)
 
 
-mfloor = chrono.ChBodyEasyBox(2, 0.01, 1, 1000, True, True, mymat)
-mfloor.SetFixed(True)
-mfloor.SetPos(chrono.ChVector3d(0,-0.15,0))
-mfloor.GetVisualShape(0).SetColor(chrono.ChColor(0.4, 0.4, 0.4))
-sys.Add(mfloor)
 
 
-# Create visualization
+
+ 
+# ---------------------------------------------------------------------
+#
+#  Create an Irrlicht application to visualize the system
+#
+
+# Create the Irrlicht visualization
 vis = chronoirr.ChVisualSystemIrrlicht()
-vis.AttachSystem(sys)
-vis.SetWindowSize(1024,768)
-vis.SetWindowTitle('Vehicle SCM Simulation')
+vis.AttachSystem(mysystem)
+vis.SetWindowSize(1280,720)
+vis.SetWindowTitle('Cobra')
 vis.Initialize()
+vis.AddLogo(chrono.GetChronoDataFile('logo_pychrono_alpha.png'))
 vis.AddSkyBox()
-vis.AddCamera(chrono.ChVector3d(0, 1, 1))
-vis.AddTypicalLights()
+vis.AddCamera(chrono.ChVector3d(5, 5, -7.5), chrono.ChVector3d(-1.0, 0, -2.5))
+vis.AddLightWithShadow(chrono.ChVector3d(10,20,10), chrono.ChVector3d(0,2.6,0), 50, 10, 40, 60, 512)
 
 
-# Define motion functions 
-period = 1/4
-mfunc   = chrono.ChFunctionSine(10, 40,  2)
-# mfunc   = chrono.ChFunctionConst(5)
-mfunc2   = chrono.ChFunctionConst(-15)
-print(mfunc)
+# ---------------------------------------------------------------------
+#
+#  Run the simulation
+#
 
-# print(FL_wheel.getPos)
+solver = chrono.ChSolverBB()
+solver.SetMaxIterations(200)
+solver.SetTolerance(1e-6)
+mysystem.SetSolver(solver)
 
-
-# Apply torques/steering
-motor_torque = 5.0
-steering_angle = 0.3  # radians
-
-# Motor set ups
-motorFL = chrono.ChLinkMotorRotationTorque()
-motorFL.Initialize(FL_wheel, FL_arm, chrono.ChFramed())
-# motorFL.SetMotorFunction(mfunc)
-motorFL.SetTorqueFunction(mfunc)
-sys.Add(motorFL)
-
-# motorRL = chrono.ChLinkMotorRotationTorque()
-# motorRL.Initialize(RL_wheel, RL_arm, chrono.ChFramed())
-# motorRL.SetTorqueFunction(mfunc2)
-# sys.Add(motorRL)
-
-
-
-
-# Simulation loop
-step_size = 1e-3
-while vis.Run():
-    # apply_controls()
-    #torque_fun = chrono.ChFunction_Const(5)  # constant torque of 5 Nm
-    # motor.SetTorqueFunction(chrono.ChFunction_(5))
-
+while(vis.Run()):
     vis.BeginScene()
     vis.Render()
+    mysystem.DoStepDynamics(0.001)
     vis.EndScene()
-    sys.DoStepDynamics(step_size)
 
-
-print('Hello')
+print('Done')
