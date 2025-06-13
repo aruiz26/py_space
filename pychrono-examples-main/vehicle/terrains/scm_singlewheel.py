@@ -18,7 +18,7 @@ import pychrono.vehicle as veh
 
 import math
 
-var_params = True
+var_params = False
 
 class MySoilParams (veh.SoilParametersCallback):
     def __init__(self):

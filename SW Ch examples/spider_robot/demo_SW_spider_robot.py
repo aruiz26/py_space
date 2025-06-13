@@ -44,7 +44,7 @@ chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
 chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
 
 # Import model items from Solidworks and add to system 
-parts = chrono.ImportSolidWorksSystem('./spider_robot.py')
+parts = chrono.ImportSolidWorksSystem('./spider/spider.py')
  
 for ib in parts:
     mysystem.Add(ib)
