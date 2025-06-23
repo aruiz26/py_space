@@ -23,7 +23,7 @@ body_0.SetName('SLDW_GROUND')
 body_0.SetFixed(True)
 exported_items.append(body_0)
 
-# Rigid body part
+# Rigid body part - wheel RR
 body_1 = chrono.ChBodyAuxRef()
 body_1.SetName('wheel_grouser-3')
 body_1.SetPos(chrono.ChVector3d(-0.214977565414353,0.0668222041244843,0.564880796408194))
@@ -42,6 +42,33 @@ body_1.AddVisualShape(body_1_1_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253
 body_1_2_shape = chrono.ChVisualShapeModelFile() 
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_1.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.0290351109510425,-0.000185466335892698,0.0154474354087597), chrono.ChQuaterniond(1,0,0,0)))
+
+
+# GROUSER WHEEL PARAMS
+# Collision material 
+mat_w = chrono.ChContactMaterialNSC()
+
+mr = chrono.ChMatrix33d()
+mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
+mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
+mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
+body_1_2_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_2_collision.obj', False, True) 
+
+
+# Collision Model
+body_1.AddCollisionModel(chrono.ChCollisionModel())
+w3pos2 = chrono.ChVector3d(-0.0290351109510425,-0.000185466335892698,0.0154474354087597)          
+
+# Triangle mesh collision shape 
+# body_1_2_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_2_collision.obj', False, True) 
+body_1_2_collision_mesh.Transform(w3pos2, mr) 
+collshape = chrono.ChCollisionShapeTriangleMesh(mat_w,body_1_2_collision_mesh,False,False,sphereswept_r)
+
+body_1.GetCollisionModel().AddShape(collshape)
+body_1.EnableCollision(True)
+
+exported_items.append(body_1)
+
 
 
 # Rigid body part
@@ -862,7 +889,7 @@ exported_items.append(body_4)
 
 
 
-# Rigid body part
+# Rigid body part - WHEEL FR
 body_5 = chrono.ChBodyAuxRef()
 body_5.SetName('wheel_grouser-2')
 body_5.SetPos(chrono.ChVector3d(0.13941963699792,0.0515054360407785,-0.0573689816914892))
@@ -882,26 +909,20 @@ body_1_2_shape = chrono.ChVisualShapeModelFile()
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_5.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.0290351109510424,-0.000185466335892677,0.0154474354087597), chrono.ChQuaterniond(1,0,0,0)))
 
+
 # Collision Model
-
 body_5.AddCollisionModel(chrono.ChCollisionModel())
-
-# Collision material 
-mat_2 = chrono.ChContactMaterialNSC()
+w2pos2 = chrono.ChVector3d(-0.0290351109510424,-0.000185466335892677,0.0154474354087597)          
 
 # Triangle mesh collision shape 
-body_1_2_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_2_collision.obj', False, True) 
-mr = chrono.ChMatrix33d()
-mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
-mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
-mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
-body_1_2_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.000185466335892677, 0.0154474354087597), mr) 
-collshape = chrono.ChCollisionShapeTriangleMesh(mat_2,body_1_2_collision_mesh,False,False,sphereswept_r)
+body_1_2_collision_mesh.Transform(w3pos2, mr) 
+collshape = chrono.ChCollisionShapeTriangleMesh(mat_w,body_1_2_collision_mesh,False,False,sphereswept_r)
+
 body_5.GetCollisionModel().AddShape(collshape)
 body_5.EnableCollision(True)
 
-
 exported_items.append(body_5)
+
 
 
 
@@ -924,6 +945,18 @@ body_6.AddVisualShape(body_1_1_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253
 body_1_2_shape = chrono.ChVisualShapeModelFile() 
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_6.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.0290351109510424,-0.000185466335892677,0.0154474354087597), chrono.ChQuaterniond(1,0,0,0)))
+
+
+# Collision Model
+body_6.AddCollisionModel(chrono.ChCollisionModel())
+w4pos2 = chrono.ChVector3d(-0.0290351109510424,-0.000185466335892677,0.0154474354087597)          
+
+# Triangle mesh collision shape 
+body_1_2_collision_mesh.Transform(w4pos2, mr) 
+collshape = chrono.ChCollisionShapeTriangleMesh(mat_w,body_1_2_collision_mesh,False,False,sphereswept_r)
+
+body_6.GetCollisionModel().AddShape(collshape)
+body_6.EnableCollision(True)
 
 exported_items.append(body_6)
 

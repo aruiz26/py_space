@@ -9,23 +9,6 @@ import math
 
 print("Loading Cobra SW...")
 
-# Utility class to use ChLinkMotorRotationAngle given the markers from the CAD
-class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
-    def __init__(self):
-        super().__init__()
-        self.bodylist = []
-
-    def Initialize(self, mark1, mark2):
-        body1 = mark1.GetBody()
-        body2 = mark2.GetBody()
-        self.bodylist.append([body1, body2])
-        frame = mark1.GetAbsFrame()
-        super().Initialize(body1, body2, frame)
-
-    def SetMotorFunction(self, rotfun):
-        super().SetAngleFunction(rotfun)
-
-
 # ---------------------------------------------------------------------
 #
 #  Create the simulation system and add items
@@ -37,73 +20,23 @@ mysystem = chrono.ChSystemSMC()
 mysystem.SetCollisionSystemType(chrono.ChCollisionSystem.Type_BULLET)
 chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
 chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
+mysystem.SetGravitationalAcceleration(chrono.ChVector3d(0,-9.81,0))
 
 # Import model items from Solidworks and add to system 
-# A list of minor differences of SW export
-######### cobra_4.py - does not include collision shapes
-######### cobra_4_2.py - includes manual addition of collison shape
-parts = chrono.ImportSolidWorksSystem('./cobra_4_2.py')
+parts = chrono.ImportSolidWorksSystem('./wheel.py')
 
+
+print(dir(mysystem))
 for ib in parts:
     mysystem.Add(ib)
     print(ib.GetName())
     
 # Retrieve objects from their name as saved from the SolidWorks interface
-bbody    = mysystem.SearchBody('Assem6^cobra_assem_4_2-1')
+bbody    = mysystem.SearchBody('wheel-1')
 bbody.SetFixed(False)
-# Front Right Assembly
-b1arm = mysystem.SearchBody('arm_assembly-2')
-b1hub = mysystem.SearchBody('hub_assem-1')
-b1wheel = mysystem.SearchBody('wheel_grouser-1')
-m1_steer_arm = mysystem.SearchMarker('steer_arm_1')
-m1_steer_hub = mysystem.SearchMarker('steer_hub_1')
-m1_drive_hub = mysystem.SearchMarker('drive_hub_1')
-m1_drive_wheel = mysystem.SearchMarker('drive_wheel_1')
 
-# lock_frame_arm = chrono.ChLinkLockLock()
-# lock_frame_arm.Initialize(b1arm, bbody, chrono.ChFramed())
-# mysystem.Add(lock_frame_arm)
-
-# Rear Right Assembly
-b2arm = mysystem.SearchBody('arm_assembly-3')
-b2hub = mysystem.SearchBody('hub_assem-4')
-b2wheel = mysystem.SearchBody('wheel_grouser-3')
-m2_steer_arm = mysystem.SearchMarker('steer_arm_2')
-m2_steer_hub = mysystem.SearchMarker('steer_hub_2')
-m2_drive_hub = mysystem.SearchMarker('drive_hub_2')
-m2_drive_wheel = mysystem.SearchMarker('drive_wheel_2')
-# Front Left Assembly
-b3arm = mysystem.SearchBody('arm_assembly-1')
-b3hub = mysystem.SearchBody('hub_assem-3')
-b3wheel = mysystem.SearchBody('wheel_grouser-2')
-m3_steer_arm = mysystem.SearchMarker('steer_arm_3')
-m3_steer_hub = mysystem.SearchMarker('steer_hub_3')
-m3_drive_hub = mysystem.SearchMarker('drive_hub_3')
-m3_drive_wheel = mysystem.SearchMarker('drive_wheel_3')
-# Rear Left Assembly
-b4arm = mysystem.SearchBody('arm_assembly-4')
-b4hub = mysystem.SearchBody('hub_assem-2')
-b4wheel = mysystem.SearchBody('wheel_grouser-4')
-m4_steer_arm = mysystem.SearchMarker('steer_arm_4')
-m4_steer_hub = mysystem.SearchMarker('steer_hub_4')
-m4_drive_hub = mysystem.SearchMarker('drive_hub_4')
-m4_drive_wheel = mysystem.SearchMarker('drive_wheel_4')
-
-
-
-# # Define motion functions 
-# period = 1
-# # ChFunctionSine (double ampl, double freq, double phase=0)
-# mfunc_sine1   = chrono.ChFunctionSine(50, 1.0/(period),  0)
-# mfunc_sine2   = chrono.ChFunctionSine(50, 1.0/(0.5*period),  3)
-
-# # Adding actuation
-# # FR (1) actuation
-# motor1_1 = CobraRobotMotor()
-# motor1_1.Initialize(m1_steer_hub, m1_steer_arm)
-# motor1_1.SetMotorFunction(mfunc_sine1)
-# mysystem.Add(motor1_1)
-
+bbody.SetPos(chrono.ChVector3d(0,1,0) )
+bbody.SetRot(chrono.ChQuaterniond(0.1, 0, 0, 1)) # quat(mag, xdir, ydir, zdir)
 
 # Create a floor
 mymat = chrono.ChContactMaterialSMC()
