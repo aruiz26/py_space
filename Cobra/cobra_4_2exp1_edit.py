@@ -6,15 +6,23 @@ import pychrono as chrono
 import builtins 
 
 # Some global settings 
-# sphereswept_r = 0.001
-# chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.003)
-# chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.003)
-# chrono.ChCollisionSystemBullet.SetContactBreakingThreshold(0.002)
+sphereswept_r = 0.001
+chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.003)
+chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.003)
+chrono.ChCollisionSystemBullet.SetContactBreakingThreshold(0.002)
 
-sphereswept_r = 0.01
-chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.03)
-chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.03)
-chrono.ChCollisionSystemBullet.SetContactBreakingThreshold(0.02)
+# =============================================================================
+# sphereswept_r = 0.01
+# chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.03)
+# chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.03)
+# chrono.ChCollisionSystemBullet.SetContactBreakingThreshold(0.02)
+# =============================================================================
+
+# Enable or disable wheel contact
+ENABLE_wheel1_contact = True # FR - wheel_grouser-1
+ENABLE_wheel2_contact = True # FL - wheel_grouser-2
+ENABLE_wheel3_contact = True # RR - wheel_grouser-3
+ENABLE_wheel4_contact = True # RL - wheel_grouser-4
 
 shapes_dir = 'cobra_4_2exp1_shapes/' 
 
@@ -48,23 +56,24 @@ body_1_2_shape = chrono.ChVisualShapeModelFile()
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_1.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253511095104253,-0.000185466335892559,0.0154474354087597), chrono.ChQuaterniond(0.669230211120907,0.228321975558784,-0.669230211120907,-0.228321975558784)))
 
-# Collision Model
-
-body_1.AddCollisionModel(chrono.ChCollisionModel())
-
-# Collision material 
-mat_1 = chrono.ChContactMaterialNSC()
-
-# Triangle mesh collision shape 
-body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
-mr = chrono.ChMatrix33d()
-mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
-mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
-mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
-body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.000185466335892559, 0.0154474354087597), mr) 
-collshape = chrono.ChCollisionShapeTriangleMesh(mat_1,body_1_1_collision_mesh,False,False,sphereswept_r)
-body_1.GetCollisionModel().AddShape(collshape)
-body_1.EnableCollision(True)
+if(ENABLE_wheel1_contact):
+    # Collision Model
+    
+    body_1.AddCollisionModel(chrono.ChCollisionModel())
+    
+    # Collision material 
+    mat_1 = chrono.ChContactMaterialNSC()
+    
+    # Triangle mesh collision shape 
+    body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
+    mr = chrono.ChMatrix33d()
+    mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
+    mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
+    mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
+    body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.000185466335892559, 0.0154474354087597), mr) 
+    collshape = chrono.ChCollisionShapeTriangleMesh(mat_1,body_1_1_collision_mesh,False,False,sphereswept_r)
+    body_1.GetCollisionModel().AddShape(collshape)
+    body_1.EnableCollision(True)
 
 exported_items.append(body_1)
 
@@ -1052,23 +1061,24 @@ body_1_2_shape = chrono.ChVisualShapeModelFile()
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_5.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253511095104242,-0.00018546633589267,0.0154474354087597), chrono.ChQuaterniond(0.669230211120907,0.228321975558784,-0.669230211120907,-0.228321975558784)))
 
-# Collision Model
-
-body_5.AddCollisionModel(chrono.ChCollisionModel())
-
-# Collision material 
-mat_5 = chrono.ChContactMaterialNSC()
-
-# Triangle mesh collision shape 
-body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
-mr = chrono.ChMatrix33d()
-mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
-mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
-mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
-body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.00018546633589267, 0.0154474354087597), mr) 
-collshape = chrono.ChCollisionShapeTriangleMesh(mat_5,body_1_1_collision_mesh,False,False,sphereswept_r)
-body_5.GetCollisionModel().AddShape(collshape)
-body_5.EnableCollision(True)
+if ENABLE_wheel3_contact: 
+    # Collision Model
+    
+    body_5.AddCollisionModel(chrono.ChCollisionModel())
+    
+    # Collision material 
+    mat_5 = chrono.ChContactMaterialNSC()
+    
+    # Triangle mesh collision shape 
+    body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
+    mr = chrono.ChMatrix33d()
+    mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
+    mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
+    mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
+    body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.00018546633589267, 0.0154474354087597), mr) 
+    collshape = chrono.ChCollisionShapeTriangleMesh(mat_5,body_1_1_collision_mesh,False,False,sphereswept_r)
+    body_5.GetCollisionModel().AddShape(collshape)
+    body_5.EnableCollision(True)
 
 exported_items.append(body_5)
 
@@ -1286,23 +1296,24 @@ body_1_2_shape = chrono.ChVisualShapeModelFile()
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_9.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253511095104248,-0.00018546633589267,0.0154474354087596), chrono.ChQuaterniond(0.669230211120907,0.228321975558784,-0.669230211120907,-0.228321975558784)))
 
-# Collision Model
-
-body_9.AddCollisionModel(chrono.ChCollisionModel())
-
-# Collision material 
-mat_9 = chrono.ChContactMaterialNSC()
-
-# Triangle mesh collision shape 
-body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
-mr = chrono.ChMatrix33d()
-mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
-mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
-mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
-body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.000185466335892698, 0.0154474354087596), mr) 
-collshape = chrono.ChCollisionShapeTriangleMesh(mat_9,body_1_1_collision_mesh,False,False,sphereswept_r)
-body_9.GetCollisionModel().AddShape(collshape)
-body_9.EnableCollision(True)
+if ENABLE_wheel4_contact:
+    # Collision Model
+    
+    body_9.AddCollisionModel(chrono.ChCollisionModel())
+    
+    # Collision material 
+    mat_9 = chrono.ChContactMaterialNSC()
+    
+    # Triangle mesh collision shape 
+    body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
+    mr = chrono.ChMatrix33d()
+    mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
+    mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
+    mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
+    body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.000185466335892698, 0.0154474354087596), mr) 
+    collshape = chrono.ChCollisionShapeTriangleMesh(mat_9,body_1_1_collision_mesh,False,False,sphereswept_r)
+    body_9.GetCollisionModel().AddShape(collshape)
+    body_9.EnableCollision(True)
 
 exported_items.append(body_9)
 
@@ -1402,23 +1413,24 @@ body_1_2_shape = chrono.ChVisualShapeModelFile()
 body_1_2_shape.SetFilename(shapes_dir +'body_1_2.obj') 
 body_11.AddVisualShape(body_1_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.00253511095104248,-0.00018546633589267,0.0154474354087597), chrono.ChQuaterniond(0.669230211120907,0.228321975558784,-0.669230211120907,-0.228321975558784)))
 
-# Collision Model
-
-body_11.AddCollisionModel(chrono.ChCollisionModel())
-
-# Collision material 
-mat_11 = chrono.ChContactMaterialNSC()
-
-# Triangle mesh collision shape 
-body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
-mr = chrono.ChMatrix33d()
-mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
-mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
-mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
-body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.00018546633589267, 0.0154474354087597), mr) 
-collshape = chrono.ChCollisionShapeTriangleMesh(mat_11,body_1_1_collision_mesh,False,False,sphereswept_r)
-body_11.GetCollisionModel().AddShape(collshape)
-body_11.EnableCollision(True)
+if ENABLE_wheel2_contact: 
+    # Collision Model
+    
+    body_11.AddCollisionModel(chrono.ChCollisionModel())
+    
+    # Collision material 
+    mat_11 = chrono.ChContactMaterialNSC()
+    
+    # Triangle mesh collision shape 
+    body_1_1_collision_mesh = chrono.ChTriangleMeshConnected.CreateFromWavefrontFile(shapes_dir + 'body_1_1_collision.obj', False, True) 
+    mr = chrono.ChMatrix33d()
+    mr[0,0]=1; mr[1,0]=0; mr[2,0]=0 
+    mr[0,1]=0; mr[1,1]=1; mr[2,1]=0 
+    mr[0,2]=0; mr[1,2]=0; mr[2,2]=1 
+    body_1_1_collision_mesh.Transform(chrono.ChVector3d(-0.0290351109510424, -0.00018546633589267, 0.0154474354087597), mr) 
+    collshape = chrono.ChCollisionShapeTriangleMesh(mat_11,body_1_1_collision_mesh,False,False,sphereswept_r)
+    body_11.GetCollisionModel().AddShape(collshape)
+    body_11.EnableCollision(True)
 
 exported_items.append(body_11)
 
@@ -1513,53 +1525,53 @@ exported_items.append(body_13)
 
 
 
-# Mate constraint: Parallel27 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
-link_1 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
-dA = chrono.ChVector3d(0,1,0)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(0,1,0)
-link_1.Initialize(body_2,body_0,False,cA,cB,dA,dB)
-link_1.SetName("Parallel27")
-exported_items.append(link_1)
+# # Mate constraint: Parallel27 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
+# link_1 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
+# dA = chrono.ChVector3d(0,1,0)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(0,1,0)
+# link_1.Initialize(body_2,body_0,False,cA,cB,dA,dB)
+# link_1.SetName("Parallel27")
+# exported_items.append(link_1)
 
 
-# Mate constraint: Parallel28 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
-link_2 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
-dA = chrono.ChVector3d(1,0,0)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(1,0,0)
-link_2.Initialize(body_2,body_0,False,cA,cB,dA,dB)
-link_2.SetName("Parallel28")
-exported_items.append(link_2)
+# # Mate constraint: Parallel28 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
+# link_2 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
+# dA = chrono.ChVector3d(1,0,0)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(1,0,0)
+# link_2.Initialize(body_2,body_0,False,cA,cB,dA,dB)
+# link_2.SetName("Parallel28")
+# exported_items.append(link_2)
 
 
-# Mate constraint: Coincident230 [MateCoincident] type:0 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
-link_3 = chrono.ChLinkMateDistanceZ()
-cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
-cB = chrono.ChVector3d(0,0,0)
-dA = chrono.ChVector3d(0,0,1)
-dB = chrono.ChVector3d(0,0,1)
-link_3.Initialize(body_2,body_0,False,cA,cB,dB)
-link_3.SetDistance(0)
-link_3.SetName("Coincident230")
-exported_items.append(link_3)
+# # Mate constraint: Coincident230 [MateCoincident] type:0 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_py-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_py ,  SW ref.type:4 (4)
+# link_3 = chrono.ChLinkMateDistanceZ()
+# cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
+# cB = chrono.ChVector3d(0,0,0)
+# dA = chrono.ChVector3d(0,0,1)
+# dB = chrono.ChVector3d(0,0,1)
+# link_3.Initialize(body_2,body_0,False,cA,cB,dB)
+# link_3.SetDistance(0)
+# link_3.SetName("Coincident230")
+# exported_items.append(link_3)
 
-link_4 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
-dA = chrono.ChVector3d(0,0,1)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(0,0,1)
-link_4.Initialize(body_2,body_0,False,cA,cB,dA,dB)
-link_4.SetName("Coincident230")
-exported_items.append(link_4)
+# link_4 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.357296158663475,-0.167031516408032,0)
+# dA = chrono.ChVector3d(0,0,1)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(0,0,1)
+# link_4.Initialize(body_2,body_0,False,cA,cB,dA,dB)
+# link_4.SetName("Coincident230")
+# exported_items.append(link_4)
 
 
 # Mate constraint: Coincident199 [MateCoincident] type:0 align:1 flip:False

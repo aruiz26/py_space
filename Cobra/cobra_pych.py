@@ -30,10 +30,13 @@ class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
 #
 #  Create the simulation system and add items
 #
- 
+
+SWexportfilename = './cobra_4_2exp1_edit.py'
+chassisPartName = 'Assem6^cobra_4_1_py-1'
 
 # mysystem = chrono.ChSystemNSC()
 mysystem = chrono.ChSystemSMC()
+mysystem.SetGravitationalAcceleration(chrono.ChVector3d(0, -9.81, 0))
 mysystem.SetCollisionSystemType(chrono.ChCollisionSystem.Type_BULLET)
 chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
 chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
@@ -42,15 +45,16 @@ chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
 # A list of minor differences of SW export
 ######### cobra_4.py - does not include collision shapes
 ######### cobra_4_2.py - includes manual addition of collison shape
-parts = chrono.ImportSolidWorksSystem('./cobra_4_2exp1.py')
+parts = chrono.ImportSolidWorksSystem(SWexportfilename)
 
 for ib in parts:
     mysystem.Add(ib)
-    print(ib.GetName())
+    # print(ib.GetName())
     
 # Retrieve objects from their name as saved from the SolidWorks interface
-bbody    = mysystem.SearchBody('Assem6^cobra_4_1_py-1')
+bbody    = mysystem.SearchBody(chassisPartName)
 bbody.SetFixed(False)
+
 # Front Right Assembly
 b1arm = mysystem.SearchBody('arm_assembly-2')
 b1hub = mysystem.SearchBody('hub_assem-1')
@@ -90,6 +94,25 @@ m4_drive_hub = mysystem.SearchMarker('drive_hub_4')
 m4_drive_wheel = mysystem.SearchMarker('drive_wheel_4')
 
 
+print(b1wheel.GetCollisionModel())
+# b1wheel.GetCollisionModel().DisallowCollisionsWith(b3wheel)
+# print(dir(b1wheel.GetCollisionModel()       ))
+b1wheel.GetCollisionModel().SetFamily(1)
+b3wheel.GetCollisionModel().SetFamily(2)
+b2wheel.GetCollisionModel().SetFamily(3)
+b4wheel.GetCollisionModel().SetFamily(4)
+
+b1wheel.GetCollisionModel().DisallowCollisionsWith(2)
+b1wheel.GetCollisionModel().DisallowCollisionsWith(3)
+b1wheel.GetCollisionModel().DisallowCollisionsWith(4)
+
+b3wheel.GetCollisionModel().DisallowCollisionsWith(3)
+b3wheel.GetCollisionModel().DisallowCollisionsWith(4)
+
+b2wheel.GetCollisionModel().DisallowCollisionsWith(4)
+
+
+
 
 # # Define motion functions 
 # period = 1
@@ -116,8 +139,11 @@ mymat.SetRestitution(0.0)
 # mysystem.Add(mfloor)
 
 terrain = veh.SCMTerrain(mysystem)
+
 terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(0,-0.2,0), chrono.QuatFromAngleX(-math.pi/2)))
-terrain.Initialize(2.0, 6.0, 0.04)
+# terrain.Initialize(2.0, 6.0, 0.04)
+terrain.Initialize(2.0, 2.0, 0.01)
+
 
 
 terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
@@ -129,6 +155,10 @@ terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
                            4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
 )
+
+# enabling moving patches
+# terrain.AddMovingPatch(b1wheel, chrono.ChVector3d(0,0,0), chrono.ChVector3d(0.5, 1, 1))
+# terrain.AddMovingPatch(b3wheel, chrono.ChVector3d(0,0,0), chrono.ChVector3d(0.5, 1, 1))
 
 # Set terrain visualization mode
 terrain.SetPlotType(veh.SCMTerrain.PLOT_PRESSURE, 0, 30000.2)
@@ -155,16 +185,29 @@ vis.AddLightWithShadow(chrono.ChVector3d(10,20,10), chrono.ChVector3d(0,2.6,0), 
 #
 #  Run the simulation
 #
-
 solver = chrono.ChSolverBB()
 solver.SetMaxIterations(200)
 solver.SetTolerance(1e-6)
 mysystem.SetSolver(solver)
 
+last_displayed_time = -1  # Initialize before the loop
+
+
 while(vis.Run()):
     vis.BeginScene()
     vis.Render()
+        
+    # Get current time, rounded to 2 decimals
+    current_time = mysystem.GetChTime()
+    rounded_time = round(current_time, 2)
+
+    # Only display if it changed
+    if rounded_time != last_displayed_time:
+        print(f"Simulation time: {rounded_time:.2f} s")
+        last_displayed_time = rounded_time
+   
     mysystem.DoStepDynamics(0.001)
     vis.EndScene()
+    
 
 print('Done')
