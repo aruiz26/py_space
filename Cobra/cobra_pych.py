@@ -42,14 +42,14 @@ chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
 # A list of minor differences of SW export
 ######### cobra_4.py - does not include collision shapes
 ######### cobra_4_2.py - includes manual addition of collison shape
-parts = chrono.ImportSolidWorksSystem('./cobra_4_2.py')
+parts = chrono.ImportSolidWorksSystem('./cobra_4_2exp1.py')
 
 for ib in parts:
     mysystem.Add(ib)
     print(ib.GetName())
     
 # Retrieve objects from their name as saved from the SolidWorks interface
-bbody    = mysystem.SearchBody('Assem6^cobra_assem_4_2-1')
+bbody    = mysystem.SearchBody('Assem6^cobra_4_1_py-1')
 bbody.SetFixed(False)
 # Front Right Assembly
 b1arm = mysystem.SearchBody('arm_assembly-2')
