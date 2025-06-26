@@ -53,7 +53,7 @@ for ib in parts:
     
 # Retrieve objects from their name as saved from the SolidWorks interface
 bbody    = mysystem.SearchBody(chassisPartName)
-bbody.SetFixed(False)
+bbody.SetFixed(True)
 
 # Front Right Assembly
 b1arm = mysystem.SearchBody('arm_assembly-2')
@@ -63,7 +63,6 @@ m1_steer_arm = mysystem.SearchMarker('steer_arm_1')
 m1_steer_hub = mysystem.SearchMarker('steer_hub_1')
 m1_drive_hub = mysystem.SearchMarker('drive_hub_1')
 m1_drive_wheel = mysystem.SearchMarker('drive_wheel_1')
-
 # Rear Right Assembly
 b2arm = mysystem.SearchBody('arm_assembly-3')
 b2hub = mysystem.SearchBody('hub_assem-4')
@@ -88,6 +87,9 @@ m4_steer_arm = mysystem.SearchMarker('steer_arm_4')
 m4_steer_hub = mysystem.SearchMarker('steer_hub_4')
 m4_drive_hub = mysystem.SearchMarker('drive_hub_4')
 m4_drive_wheel = mysystem.SearchMarker('drive_wheel_4')
+
+
+
 
 # =============================================================================
 # 
