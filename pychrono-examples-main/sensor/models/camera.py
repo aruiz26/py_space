@@ -193,7 +193,7 @@ step_size = 1e-3
 end_time = 20.0
 
 # Save camera images
-save = False
+save = True
 
 # Render camera images
 vis = True

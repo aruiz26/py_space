@@ -5,7 +5,7 @@ import pychrono.irrlicht as chronoirr
 import pychrono.vehicle as veh
 import math
 import sys
-
+import time
 
 print("Loading Cobra SW...")
 
@@ -25,10 +25,7 @@ class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
     def SetMotorFunction(self, rotfun):
         super().SetAngleFunction(rotfun)
 
-def control(speed=1, steering=0):
-    # linear_to_angular_velocity = speed
-    # wheel_mot_func1 = chrono.ChFunctionConst(-linear_to_angular_velocity*(1-steering))
-    # wheel_mot_func2 = chrono.ChFunctionConst(linear_to_angular_velocity*(1+steering))
+def control(speed=0, steering=0):
     temp_fun1 = chrono.ChFunctionConst(steering)
     temp_fun2 = chrono.ChFunctionConst(-steering)
     
@@ -46,10 +43,6 @@ def control(speed=1, steering=0):
     motorRL_drive.SetMotorFunction(temp_fun4)
     
     
-    
-    
-    
-
 # ---------------------------------------------------------------------
 #
 #  Create the simulation system and add items
@@ -196,7 +189,7 @@ mymat.SetRestitution(0.0)
 terrain = veh.SCMTerrain(mysystem)
 
 terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(6,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
-terrain.Initialize(12.0, 2.0, 0.01)
+terrain.Initialize(12.0, 5.0, 0.01)
 
 
 
@@ -244,34 +237,54 @@ solver.SetMaxIterations(200)
 solver.SetTolerance(1e-6)
 mysystem.SetSolver(solver)
 
+# sim time counter variables
 last_displayed_time = -1  # Initialize before the loop
+start_time = time.perf_counter() # Counter for real time
+tf1, tf2 = 0, 0 # recalls last time
+dt1, dt2 = 0, 0
+rtf = 0
+t = 0
 
-
-while(vis.Run()):
+while(vis.Run() ):
     vis.BeginScene()
     vis.Render()
         
-    # Get current time, rounded to 2 decimals
+    # Get current simulation time, rounded to 2 decimals
     current_time = mysystem.GetChTime()
+    dt1 = current_time - tf1
+    tf1 = current_time
     rounded_time = round(current_time, 2)
-
-    # Only display if it changed
+    # Real elapsed time
+    elapsed_t = time.perf_counter() - start_time
+    dt2 = elapsed_t - tf2
+    tf2 = elapsed_t
+    if current_time>0:
+        rtf = dt2/dt1
+    
+    # Only display if it changed, to 2 decimal points (eg. 0.01, 0.02,...)
     if rounded_time != last_displayed_time:
-        print(f"Simulation time: {rounded_time:.2f} s")
+        #print(f"Simulation time: {rounded_time:.2f} s", f"Real time: {elapsed_t::2f} s")
+        print(f"Simulation time: {rounded_time:.2f} s, Real time: {elapsed_t:.2f} s, RTF: {rtf:.2f}")
         last_displayed_time = rounded_time
     
     t = current_time
-    if t<2:
+    if t<1:
         speed_t = 0
         steering_t = 0
     else:
-        speed_t = t
-        steering_t = 0.2*math.sin(t)
+        speed_t = 2
+        steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4))
     
+
+
     control(speed = speed_t, steering = steering_t)
    
     mysystem.DoStepDynamics(0.001)
     vis.EndScene()
+    
+    if t>9:
+        input("Pause as t=9s. Press Enter to END")
+        sys.exit()
     
 
 print('Done')
