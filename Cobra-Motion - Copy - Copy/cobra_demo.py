@@ -6,6 +6,8 @@ import pychrono.vehicle as veh
 import math
 import sys
 import time
+import csv
+import numpy as np
 
 print("Loading Cobra SW...")
 
@@ -245,7 +247,23 @@ dt1, dt2 = 0, 0
 rtf = 0
 t = 0
 
+# print(dir(bbody))
+# print(bbody.GetRot())
+# print(dir(bbody.GetRot()))
+# sys.exit()
+
+# Data export
+csv_filename = 'output_04_straight21s_60rpm.csv'
+# Create a new CSV file and write a header (optional)
+headers = ['t', 'x', 'y', 'z', 'dx', 'dy', 'dz', 'ddx', 'ddy', 'ddz', 'speed_set', 'steering_set',
+           'q0', 'q1', 'q2', 'q3']
+with open(csv_filename, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    # header = [f'val{i+1}' for i in range(9)]
+    writer.writerow(headers)
+
 while(vis.Run() ):
+# while (True):
     vis.BeginScene()
     vis.Render()
         
@@ -272,17 +290,37 @@ while(vis.Run() ):
         speed_t = 0
         steering_t = 0
     else:
-        speed_t = 2
+        speed_t = 60*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
         steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4))
+        steering_t = 0
     
 
 
     control(speed = speed_t, steering = steering_t)
    
     mysystem.DoStepDynamics(0.001)
+    
+    # data export ready
+    pos = bbody.GetPos()
+    dtpos = bbody.GetPosDt()
+    ddtpos = bbody.GetPosDt2()
+    qrot = bbody.GetRot()
+    
+    var1 = np.array([pos.x, pos.y, pos.z])
+    var2 = np.array([dtpos.x, dtpos.y, dtpos.z])
+    var3 = np.array([ddtpos.x, ddtpos.y, ddtpos.z])
+    var4 = np.array([qrot.e0, qrot.e1, qrot.e2, qrot.e3])
+    
+    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4))  # 1x9 array
+
+    # Append the data row to the CSV
+    with open(csv_filename, mode='a', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(combined)
+    
     vis.EndScene()
     
-    if t>9:
+    if t>21:
         input("Pause as t=9s. Press Enter to END")
         sys.exit()
     
