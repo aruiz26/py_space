@@ -37,6 +37,10 @@ indf = 55000
 inds = [ind0:indf];
 
 
+
+
+% figure(2)
+% clf(2)
 figure(1)
 hold on
 yyaxis('right')
@@ -65,4 +69,33 @@ xlim([0, 80])
 figure
 meanfreq(ddy, fs)
 
+%%
+format bank
+disp('new trial------------')
+numFigs = length(findall(0, 'Type', 'figure'));
+figList = findall(0, 'Type', 'figure');
+
+fig = gcf
+windowPos = get(fig,'Position') % [x, y, width, height]
+
+screenSize = get(0, 'ScreenSize')  % [left bottom width height]
+vertn = floor(screenSize(4)/windowPos(4))
+vertpos1 = (screenSize(4)/vertn)/2;
+vertposn = round([0:vertn-1].*windowPos(4) + vertpos1)
+
+horizn = floor(screenSize(3)/windowPos(3))
+horizpos1 = (screenSize(3)/horizn)/2;
+horizposn = round([0:horizn-1].*windowPos(3) + horizpos1)
+
+posfign = horizn*vertn
+
+copyhorz = repelem(horizposn,vertn)';
+copyvert = repmat(vertposn,1,horizn)';
+posn = [copy]
+
+
+
+
+
+% fign = figList(1)
 
