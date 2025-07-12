@@ -176,6 +176,13 @@ frameRL_drive = jointRL_drive.GetVisualModelFrame()
 motorRL_drive.Initialize(b4hub, b4wheel, frameRL_drive)
 mysystem.Add(motorRL_drive)
 
+print(dir( b1wheel.GetAppliedTorque() ))
+
+appT = [getattr(wheel.getAppliedTorque(), comp) for wheel in [b1wheel, b2wheel, b3wheel, b4wheel], 
+        for comp in ['x', 'y', 'z']]
+print(appT)
+
+sys.exit()
 
 # sys.exit()
 # Create a floor
@@ -190,9 +197,9 @@ mymat.SetRestitution(0.0)
 
 terrain = veh.SCMTerrain(mysystem)
 
-terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(6,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
-terrain.Initialize(12.0, 5.0, 0.01)
-
+terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(4,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
+# terrain.Initialize(12.0, 5.0, 0.01)
+terrain.Initialize(8.0, 2.5, 0.01*(5))
 
 
 terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
@@ -247,10 +254,7 @@ dt1, dt2 = 0, 0
 rtf = 0
 t = 0
 
-# print(dir(bbody))
-# print(bbody.GetRot())
-# print(dir(bbody.GetRot()))
-# sys.exit()
+
 
 # Data export
 csv_filename = 'output_04_straight21s_60rpm.csv'
@@ -284,6 +288,10 @@ while(vis.Run() ):
         #print(f"Simulation time: {rounded_time:.2f} s", f"Real time: {elapsed_t::2f} s")
         print(f"Simulation time: {rounded_time:.2f} s, Real time: {elapsed_t:.2f} s, RTF: {rtf:.2f}")
         last_displayed_time = rounded_time
+        
+        
+        x1 = b1wheel.GetAppliedTorque()
+        print(x1)
     
     t = current_time
     if t<1:
@@ -291,10 +299,10 @@ while(vis.Run() ):
         steering_t = 0
     else:
         speed_t = 60*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
-        steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4))
+        steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
         steering_t = 0
     
-
+ 
 
     control(speed = speed_t, steering = steering_t)
    
@@ -305,13 +313,14 @@ while(vis.Run() ):
     dtpos = bbody.GetPosDt()
     ddtpos = bbody.GetPosDt2()
     qrot = bbody.GetRot()
+    wheels_cont_tor = np.array([b1wheel.GetContactTorque(), ])
     
     var1 = np.array([pos.x, pos.y, pos.z])
     var2 = np.array([dtpos.x, dtpos.y, dtpos.z])
     var3 = np.array([ddtpos.x, ddtpos.y, ddtpos.z])
     var4 = np.array([qrot.e0, qrot.e1, qrot.e2, qrot.e3])
     
-    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4))  # 1x9 array
+    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4, np.array(x1)))  # 1x9 array
 
     # Append the data row to the CSV
     with open(csv_filename, mode='a', newline='') as file:
