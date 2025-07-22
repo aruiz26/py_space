@@ -176,15 +176,7 @@ frameRL_drive = jointRL_drive.GetVisualModelFrame()
 motorRL_drive.Initialize(b4hub, b4wheel, frameRL_drive)
 mysystem.Add(motorRL_drive)
 
-print(dir( b1wheel.GetAppliedTorque() ))
 
-appT = [getattr(wheel.getAppliedTorque(), comp) for wheel in [b1wheel, b2wheel, b3wheel, b4wheel], 
-        for comp in ['x', 'y', 'z']]
-print(appT)
-
-sys.exit()
-
-# sys.exit()
 # Create a floor
 mymat = chrono.ChContactMaterialSMC()
 mymat.SetRestitution(0.0)
@@ -197,9 +189,9 @@ mymat.SetRestitution(0.0)
 
 terrain = veh.SCMTerrain(mysystem)
 
-terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(4,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
+terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(8,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
 # terrain.Initialize(12.0, 5.0, 0.01)
-terrain.Initialize(8.0, 2.5, 0.01*(5))
+terrain.Initialize(16.0, 2.5, 0.01*(1/1))
 
 # =============================================================================
 # # adjusted from default for single wheel test in SCM
@@ -280,24 +272,18 @@ dt1, dt2 = 0, 0
 rtf = 0
 t = 0
 
-<<<<<<< HEAD
 # print(dir(bbody))
 # print(bbody.GetRot())
 # print(dir(bbody.GetRot()))
 
-# =============================================================================
-# dvar = motorFL_drive
+# dvar = vis
 # print(dir(dvar))
 # pvar = motorFL_drive.GetMotorTorque()
 # print(pvar)
 # sys.exit()
-# =============================================================================
-=======
-
->>>>>>> 7e6b943570dbe3a9df39f94c61ed8a97d0597074
 
 # Data export
-csv_filename = 'output_06_straight21s_60rpm_SandySoil.csv'
+csv_filename = 'output_05_straight21s_60rpm_ClaySoil.csv'
 # csv_filename = 'temptest_05.csv'
 # Create a new CSV file and write a header (optional)
 headers = ['t', 'x', 'y', 'z', 'dx', 'dy', 'dz', 'ddx', 'ddy', 'ddz', 'speed_set', 'steering_set',
@@ -329,10 +315,6 @@ while(vis.Run() ):
         #print(f"Simulation time: {rounded_time:.2f} s", f"Real time: {elapsed_t::2f} s")
         print(f"Simulation time: {rounded_time:.2f} s, Real time: {elapsed_t:.2f} s, RTF: {rtf:.2f}")
         last_displayed_time = rounded_time
-        
-        
-        x1 = b1wheel.GetAppliedTorque()
-        print(x1)
     
     t = current_time
     if t<1:
@@ -350,18 +332,16 @@ while(vis.Run() ):
     mysystem.DoStepDynamics(0.001)
     
     # data export ready
-<<<<<<< HEAD
     pos = bbody.GetPos() # 3d linear pos of chassis
     dtpos = bbody.GetPosDt() # 3d linear vel of chassis
     ddtpos = bbody.GetPosDt2() # 3d linear acc of chassis
     qrot = bbody.GetRot() # quat rotation of chassis
-=======
+
     pos = bbody.GetPos()
     dtpos = bbody.GetPosDt()
     ddtpos = bbody.GetPosDt2()
     qrot = bbody.GetRot()
-    wheels_cont_tor = np.array([b1wheel.GetContactTorque(), ])
->>>>>>> 7e6b943570dbe3a9df39f94c61ed8a97d0597074
+
     
     var1 = np.array([pos.x, pos.y, pos.z])
     var2 = np.array([dtpos.x, dtpos.y, dtpos.z])
@@ -370,11 +350,8 @@ while(vis.Run() ):
     var5 = np.array([motorFR_drive.GetMotorTorque(), motorRR_drive.GetMotorTorque(),
                      motorFL_drive.GetMotorTorque(), motorRL_drive.GetMotorTorque()])
     
-<<<<<<< HEAD
     combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4, var5))  # 1x9 array
-=======
-    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4, np.array(x1)))  # 1x9 array
->>>>>>> 7e6b943570dbe3a9df39f94c61ed8a97d0597074
+
 
     # Append the data row to the CSV
     with open(csv_filename, mode='a', newline='') as file:
@@ -385,6 +362,7 @@ while(vis.Run() ):
     
     if t>21:
         input("Pause as t=21s. Press Enter to END")
+        vis.Quit()
         sys.exit()
     
 
