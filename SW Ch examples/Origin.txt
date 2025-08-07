@@ -1,0 +1,1 @@
+From chrono-solidworks-master/to_put_in_app_dir_examples 
