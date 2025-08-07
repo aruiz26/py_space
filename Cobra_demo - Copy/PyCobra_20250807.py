@@ -1625,9 +1625,9 @@ body_14_1_shape.SetFilename(shapes_dir +'body_14_1.obj')
 body_14.AddVisualShape(body_14_1_shape, chrono.ChFramed(chrono.ChVector3d(0,0,0), chrono.ChQuaterniond(1,0,0,0)))
 
 # Visualization shape 
-body_14_1_shape = chrono.ChVisualShapeModelFile() 
-body_14_1_shape.SetFilename(shapes_dir +'body_14_1.obj') 
-body_14.AddVisualShape(body_14_1_shape, chrono.ChFramed(chrono.ChVector3d(-0.175,0,0), chrono.ChQuaterniond(1,0,0,0)))
+body_14_2_shape = chrono.ChVisualShapeModelFile() 
+body_14_2_shape.SetFilename(shapes_dir +'body_14_1.obj') 
+body_14.AddVisualShape(body_14_2_shape, chrono.ChFramed(chrono.ChVector3d(-0.175,0,0), chrono.ChQuaterniond(1,0,0,0)))
 
 # Auxiliary marker (coordinate system feature)
 marker_14_1 = chrono.ChMarker()
@@ -1636,10 +1636,10 @@ body_14.AddMarker(marker_14_1)
 marker_14_1.ImposeAbsoluteTransform(chrono.ChFramed(chrono.ChVector3d(5.55111512312578E-17,-0.0127,0.0875),chrono.ChQuaterniond(0.707106781186548,0,-0.707106781186547,0)))
 
 # Auxiliary marker (coordinate system feature)
-marker_14_1 = chrono.ChMarker()
-marker_14_1.SetName('Coordinate System2')
-body_14.AddMarker(marker_14_1)
-marker_14_1.ImposeAbsoluteTransform(chrono.ChFramed(chrono.ChVector3d(3.40798322461791E-17,-0.0127,-0.0875),chrono.ChQuaterniond(0.707106781186548,0,-0.707106781186547,0)))
+marker_14_2 = chrono.ChMarker()
+marker_14_2.SetName('Coordinate System2-2')
+body_14.AddMarker(marker_14_2)
+marker_14_2.ImposeAbsoluteTransform(chrono.ChFramed(chrono.ChVector3d(3.40798322461791E-17,-0.0127,-0.0875),chrono.ChQuaterniond(0.707106781186548,0,-0.707106781186547,0)))
 
 exported_items.append(body_14)
 

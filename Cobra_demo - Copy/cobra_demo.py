@@ -28,17 +28,18 @@ class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
         super().SetAngleFunction(rotfun)
 
 def control(speed=0, steering=0):
+    # Position control function for steering
     temp_fun1 = chrono.ChFunctionConst(steering)
     temp_fun2 = chrono.ChFunctionConst(-steering)
-    
+    # speed control function for wheel rot speed 
     temp_fun3 = chrono.ChFunctionConst(speed)
     temp_fun4 = chrono.ChFunctionConst(-speed)
-    
+    # Set steering motor function
     motorFR_steer.SetMotorFunction(temp_fun1)
     motorRR_steer.SetMotorFunction(temp_fun2)
     motorFL_steer.SetMotorFunction(temp_fun1)
     motorRL_steer.SetMotorFunction(temp_fun2)
-    # Drive actuation
+    # Set wheel motor function
     motorFR_drive.SetMotorFunction(temp_fun3)
     motorRR_drive.SetMotorFunction(temp_fun4)
     motorFL_drive.SetMotorFunction(temp_fun3)
@@ -61,9 +62,6 @@ chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
 chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
 
 # Import model items from Solidworks and add to system 
-# A list of minor differences of SW export
-######### cobra_4.py - does not include collision shapes
-######### cobra_4_2.py - includes manual addition of collison shape
 parts = chrono.ImportSolidWorksSystem(SWexportfilename)
 
 for item in parts:
@@ -94,20 +92,21 @@ b4wheel = mysystem.SearchBody('wheel_grouser-4')
 # force1_bod = mysystem.SearchBody()
 
 
-
-# IF WHEEL COLLISIONS ARE ENABLED
+# =============================================================================
+# DISABLE COLLISION BETWEEN EACH WHEEL
+# =============================================================================
 b1wheel.GetCollisionModel().SetFamily(1)
 b3wheel.GetCollisionModel().SetFamily(2)
 b2wheel.GetCollisionModel().SetFamily(3)
 b4wheel.GetCollisionModel().SetFamily(4)
-
+# Disable wheel collision between wheel 1 and the rest
 b1wheel.GetCollisionModel().DisallowCollisionsWith(2)
 b1wheel.GetCollisionModel().DisallowCollisionsWith(3)
 b1wheel.GetCollisionModel().DisallowCollisionsWith(4)
-
+# Disable collsiion between wheel3 and the remaining
 b3wheel.GetCollisionModel().DisallowCollisionsWith(3)
 b3wheel.GetCollisionModel().DisallowCollisionsWith(4)
-
+# Disable collsiion between wheel2 and the remaining
 b2wheel.GetCollisionModel().DisallowCollisionsWith(4)
 
 
@@ -311,7 +310,6 @@ while(vis.Run() ):
         steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
         steering_t = 0
     
- 
 
     control(speed = speed_t, steering = steering_t)
    
