@@ -10,6 +10,8 @@ import csv
 import numpy as np
 
 print("Loading Cobra SW...")
+soilmdl = 'sand' # Options: custom, sand, soil
+csv_filename = 'output_02_straight21s_50rpm_Clay_Soil.csv'
 
 # Utility class to use ChLinkMotorRotationAngle given the markers from the CAD
 class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
@@ -176,7 +178,7 @@ terrain = veh.SCMTerrain(mysystem)
 terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(7.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
 # terrain.Initialize(12.0, 5.0, 0.01)
 # terrain.Initialize(16.0, 2.5, 0.01*(1/1))
-terrain.Initialize(16.0, 2*(1/2), 0.01*(5/1))
+terrain.Initialize(16.0, 2*(1/2), 0.01*(1/1))
 
 # =============================================================================
 # # adjusted from default for single wheel test in SCM
@@ -191,29 +193,29 @@ terrain.Initialize(16.0, 2*(1/2), 0.01*(5/1))
 # )
 # =============================================================================
 
-# "Sandy Soil Values" from  drawbar pull tech rep
-terrain.SetSoilParameters(5e5,  # Bekker Kphi
-                           3e3,      # Bekker Kc
-                           1.1,    # Bekker n exponent
-                           0,      # Mohr cohesive limit (Pa)
-                           30,     # Mohr friction limit (degrees)
-                           0.01,   # Janosi shear coefficient (m)
-                           4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-                           3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-)
-
 # =============================================================================
-# # "Clayley Soil Values" from  drawbar pull tech rep
-# terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
-#                            20680,      # Bekker Kc
-#                            1.0,    # Bekker n exponent
-#                            3500,      # Mohr cohesive limit (Pa)
-#                            11,     # Mohr friction limit (degrees)
-#                            0.025,   # Janosi shear coefficient (m)
-#                            7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+# # "Sandy Soil Values" from  drawbar pull tech rep
+# terrain.SetSoilParameters(5e5,  # Bekker Kphi
+#                            3e3,      # Bekker Kc
+#                            1.1,    # Bekker n exponent
+#                            0,      # Mohr cohesive limit (Pa)
+#                            30,     # Mohr friction limit (degrees)
+#                            0.01,   # Janosi shear coefficient (m)
+#                            4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
 #                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
 # )
 # =============================================================================
+
+# "Clayley Soil Values" from  drawbar pull tech rep
+terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
+                           20680,      # Bekker Kc
+                           1.0,    # Bekker n exponent
+                           3500,      # Mohr cohesive limit (Pa)
+                           11,     # Mohr friction limit (degrees)
+                           0.025,   # Janosi shear coefficient (m)
+                           7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                           3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+)
 
 # enabling moving patches
 # terrain.AddMovingPatch(b1wheel, chrono.ChVector3d(0,0,0), chrono.ChVector3d(0.5, 1, 1))
@@ -268,7 +270,7 @@ t = 0
 # sys.exit()
 
 # Data export
-csv_filename = 'output_05_straight21s_60rpm_ClaySoil.csv'
+# csv_filename = 'output_05_straight21s_60rpm_ClaySoil.csv'
 # csv_filename = 'temptest_05.csv'
 # Create a new CSV file and write a header (optional)
 headers = ['t', 'x', 'y', 'z', 'dx', 'dy', 'dz', 'ddx', 'ddy', 'ddz', 'speed_set', 'steering_set',
@@ -306,7 +308,7 @@ while(vis.Run() ):
         speed_t = 0
         steering_t = 0
     else:
-        speed_t = 60*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
+        speed_t = 50*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
         steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
         steering_t = 0
     

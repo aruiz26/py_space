@@ -6,7 +6,7 @@ clear; clc; close all;
 %% Data parsing from csv
 
 % Read CSV file as a table (header will be used automatically)
-T = readtable('output_03_straight21s.csv');
+T = readtable('output_01_straight21s_50rpm_Sand_Soil.csv');
 
 % Access each column by its name (from header)
 t = T.t;
@@ -104,6 +104,7 @@ set(gcf, 'Position', [100, 100, 1800, 800]); % [x,y,width, height]
 figure
 plot(z,x)
 xlabel('z - lateral'), ylabel('x-longit')
+% axis equal
 % axis('equal')
 
 
