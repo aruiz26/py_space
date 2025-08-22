@@ -6,7 +6,7 @@ clear; clc; close all;
 %% Data parsing from csv
 
 % Read CSV file as a table (header will be used automatically)
-T = readtable('output_01_straight21s_50rpm_Sand_Soil.csv');
+T = readtable('output_02_test_clay.csv');
 
 % Access each column by its name (from header)
 t = T.t;
@@ -22,6 +22,10 @@ ddz  = T.ddz;
 speed_t = T.speed_set;
 steering_t = T.steering_set;
 
+FRTor = T.motFRTor;
+RRTor = -T.motRRTor;
+FLTor = T.motFLTor;
+RLTor = -T.motRLTor;
 
 try
     ver = 1;
@@ -107,8 +111,18 @@ xlabel('z - lateral'), ylabel('x-longit')
 % axis equal
 % axis('equal')
 
+%%
+figure
+plot(t, FRTor)
+hold on
+plot(t, RRTor)
+plot(t, FLTor)
+plot(t, RLTor)
 
+legend('FR', 'RR', 'FL', 'RL', 'Location', 'best')
+% xlim([1, inf])
+box on, grid minor
 
-
-
+xlabel('t(s)')
+ylabel('Torque (Nm)')
 

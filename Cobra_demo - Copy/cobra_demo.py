@@ -9,10 +9,14 @@ import time
 import csv
 import numpy as np
 
-print("Loading Cobra SW...")
-soilmdl = 'sand' # Options: custom, sand, soil
-csv_filename = 'output_02_straight21s_50rpm_Clay_Soil.csv'
+## Edit
+soilmdl = 'clay' # Options: custom, sand, soil
+# csv_filename = 'output_02_straight21s_50rpm_Clay_Soil.csv'
+csv_filename = 'output_02_2_test_clay.csv'
+mesh_gain = (1/4) # higher==rougher mesh. def (1)
+##
 
+print("Loading Cobra SW...")
 # Utility class to use ChLinkMotorRotationAngle given the markers from the CAD
 class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
     def __init__(self):
@@ -35,7 +39,7 @@ def control(speed=0, steering=0):
     temp_fun2 = chrono.ChFunctionConst(-steering)
     # speed control function for wheel rot speed 
     temp_fun3 = chrono.ChFunctionConst(speed)
-    temp_fun4 = chrono.ChFunctionConst(-speed)
+    temp_fun4 = chrono.ChFunctionConst(-speed) # forfaward convention
     # Set steering motor function
     motorFR_steer.SetMotorFunction(temp_fun1)
     motorRR_steer.SetMotorFunction(temp_fun2)
@@ -178,7 +182,7 @@ terrain = veh.SCMTerrain(mysystem)
 terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(7.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
 # terrain.Initialize(12.0, 5.0, 0.01)
 # terrain.Initialize(16.0, 2.5, 0.01*(1/1))
-terrain.Initialize(16.0, 2*(1/2), 0.01*(1/1))
+terrain.Initialize(16.0, 2*(1/2), 0.01*mesh_gain)
 
 # =============================================================================
 # # adjusted from default for single wheel test in SCM
@@ -280,10 +284,11 @@ with open(csv_filename, mode='w', newline='') as file:
     # header = [f'val{i+1}' for i in range(9)]
     writer.writerow(headers)
 
-while(vis.Run() ):
-# while (True):
-    vis.BeginScene()
-    vis.Render()
+# while(vis.Run() ):
+    vis.Quit()
+while (True):
+    # vis.BeginScene()
+    # vis.Render()
         
     # Get current simulation time, rounded to 2 decimals
     current_time = mysystem.GetChTime()
@@ -344,11 +349,11 @@ while(vis.Run() ):
         writer = csv.writer(file)
         writer.writerow(combined)
     
-    vis.EndScene()
+    # vis.EndScene()
     
     if t>21:
         input("Pause as t=21s. Press Enter to END")
-        vis.Quit()
+        # vis.Quit()
         sys.exit()
     
 
