@@ -6,7 +6,7 @@ clear; clc; close all;
 %% Data parsing from csv
 
 % Read CSV file as a table (header will be used automatically)
-T = readtable('output_03_sand_steer_straight_Copy.csv');
+T = readtable('output_04_sand_steer_curve.csv');
 % figTitle = 'Cobra CSM - Sandy Soil - 60rpm';
 %%
 % Access each column by its name (from header)
