@@ -1645,44 +1645,46 @@ exported_items.append(body_14)
 
 
 
-
-# Mate constraint: Parallel27 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
-link_1 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
-dA = chrono.ChVector3d(0,1,0)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(0,1,0)
-link_1.Initialize(body_1,body_0,False,cA,cB,dA,dB)
-link_1.SetName("Parallel27")
-exported_items.append(link_1)
-
-
-# Mate constraint: Parallel28 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
-link_2 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
-dA = chrono.ChVector3d(1,0,0)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(1,0,0)
-link_2.Initialize(body_1,body_0,False,cA,cB,dA,dB)
-link_2.SetName("Parallel28")
-exported_items.append(link_2)
-
-
-# Mate constraint: Parallel29 [MateParallel] type:3 align:0 flip:False
-#   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
-#   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
-link_3 = chrono.ChLinkMateParallel()
-cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
-dA = chrono.ChVector3d(0,0,1)
-cB = chrono.ChVector3d(0,0,0)
-dB = chrono.ChVector3d(0,0,1)
-link_3.Initialize(body_1,body_0,False,cA,cB,dA,dB)
-link_3.SetName("Parallel29")
-exported_items.append(link_3)
+# parallel mates used to align assembly
+# =============================================================================
+# # Mate constraint: Parallel27 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
+# link_1 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
+# dA = chrono.ChVector3d(0,1,0)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(0,1,0)
+# link_1.Initialize(body_1,body_0,False,cA,cB,dA,dB)
+# link_1.SetName("Parallel27")
+# exported_items.append(link_1)
+# 
+# 
+# # Mate constraint: Parallel28 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
+# link_2 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
+# dA = chrono.ChVector3d(1,0,0)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(1,0,0)
+# link_2.Initialize(body_1,body_0,False,cA,cB,dA,dB)
+# link_2.SetName("Parallel28")
+# exported_items.append(link_2)
+# 
+# 
+# # Mate constraint: Parallel29 [MateParallel] type:3 align:0 flip:False
+# #   Entity 0: C::E name: body_0 , SW name: Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 ,  SW ref.type:4 (4)
+# #   Entity 1: C::E name: body_0 , SW name: cobra_4_1_pyMarkers - Copy ,  SW ref.type:4 (4)
+# link_3 = chrono.ChLinkMateParallel()
+# cA = chrono.ChVector3d(0.0447652371612743,-0.281923629727815,-0.253755907358352)
+# dA = chrono.ChVector3d(0,0,1)
+# cB = chrono.ChVector3d(0,0,0)
+# dB = chrono.ChVector3d(0,0,1)
+# link_3.Initialize(body_1,body_0,False,cA,cB,dA,dB)
+# link_3.SetName("Parallel29")
+# exported_items.append(link_3)
+# =============================================================================
 
 
 # Mate constraint: Coincident199 [MateCoincident] type:0 align:1 flip:False

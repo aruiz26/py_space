@@ -12,7 +12,7 @@ import numpy as np
 ## Edit
 soilmdl = 'sand' # Options: custom, sand, soil
 # csv_filename = 'output_02_straight21s_50rpm_Clay_Soil.csv'
-csv_filename = 'output_04_sand_steer_curve.csv'
+csv_filename = 'output_04_2_sand_steer_curve.csv'
 mesh_gain = (1/1) # higher==rougher mesh. def (1)
 t_final = 5 # Used 21 s for striaght line test
 ##
@@ -320,7 +320,7 @@ while(vis.Run() ):
     else:
         speed_t = 50*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
         steering_t = 20*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
-        steering_t = 20*(math.pi/180)
+        steering_t = 45*(math.pi/180)
         # steering_t = 0
     
 
