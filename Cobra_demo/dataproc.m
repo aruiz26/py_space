@@ -6,7 +6,7 @@ clear; clc; close all;
 %% Data parsing from csv
 
 % Read CSV file as a table (header will be used automatically)
-T = readtable('output_03_straight21s.csv');
+T = readtable('output_03_curve_20deg_5s_50rpm_Sand.csv');
 
 % Access each column by its name (from header)
 t = T.t;
@@ -22,6 +22,10 @@ ddz  = T.ddz;
 speed_t = T.speed_set;
 steering_t = T.steering_set;
 
+FRTor = T.motFRTor;
+RRTor = -T.motRRTor;
+FLTor = T.motFLTor;
+RLTor = -T.motRLTor;
 
 try
     ver = 1;
@@ -42,7 +46,7 @@ catch
 end
 
 %%
-t1 = 1; % sim start time
+t1 = 0; % sim start time
 t = t - t1;  % adjusting time
 t1 = 0; % t1=1 was originally added to xlim, this is to adjust it
 
@@ -104,10 +108,21 @@ set(gcf, 'Position', [100, 100, 1800, 800]); % [x,y,width, height]
 figure
 plot(z,x)
 xlabel('z - lateral'), ylabel('x-longit')
+% axis equal
 % axis('equal')
 
+%%
+figure
+plot(t, FRTor)
+hold on
+plot(t, RRTor)
+plot(t, FLTor)
+plot(t, RLTor)
 
+legend('FR', 'RR', 'FL', 'RL', 'Location', 'best')
+% xlim([1, inf])
+box on, grid minor
 
-
-
+xlabel('t(s)')
+ylabel('Torque (Nm)')
 

@@ -9,8 +9,16 @@ import time
 import csv
 import numpy as np
 
-print("Loading Cobra SW...")
+## Edit
+soilmdl = "sand" # Options: custom, sand, clay
+csv_filename = 'output_03_curve_20deg_5s_50rpm_Sand.csv'
+# csv_filename = 'output_04_2_sand_steer_curve.csv'
+mesh_gain = (1/1) # higher==rougher mesh. def (1)
+t_final = 5 # Used 21 s for striaght line test
+option_area = "turn" # opt: "turn", "straight"
+##
 
+print("Loading Cobra SW...")
 # Utility class to use ChLinkMotorRotationAngle given the markers from the CAD
 class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
     def __init__(self):
@@ -28,17 +36,18 @@ class CobraRobotMotor(chrono.ChLinkMotorRotationAngle):
         super().SetAngleFunction(rotfun)
 
 def control(speed=0, steering=0):
+    # Position control function for steering
     temp_fun1 = chrono.ChFunctionConst(steering)
     temp_fun2 = chrono.ChFunctionConst(-steering)
-    
+    # speed control function for wheel rot speed 
     temp_fun3 = chrono.ChFunctionConst(speed)
-    temp_fun4 = chrono.ChFunctionConst(-speed)
-    
+    temp_fun4 = chrono.ChFunctionConst(-speed) # forfaward convention
+    # Set steering motor function
     motorFR_steer.SetMotorFunction(temp_fun1)
     motorRR_steer.SetMotorFunction(temp_fun2)
     motorFL_steer.SetMotorFunction(temp_fun1)
     motorRL_steer.SetMotorFunction(temp_fun2)
-    # Drive actuation
+    # Set wheel motor function
     motorFR_drive.SetMotorFunction(temp_fun3)
     motorRR_drive.SetMotorFunction(temp_fun4)
     motorFL_drive.SetMotorFunction(temp_fun3)
@@ -50,8 +59,8 @@ def control(speed=0, steering=0):
 #  Create the simulation system and add items
 #
 
-SWexportfilename = './cobra2.py'
-chassisPartName = 'Assem6^cobra_4_1_pyMarkers-1'
+SWexportfilename = './PyCobra_20250807.py'
+chassisPartName = 'Assem6^cobra_4_1_pyMarkers - Copy-1'
 
 # mysystem = chrono.ChSystemNSC()
 mysystem = chrono.ChSystemSMC()
@@ -61,9 +70,6 @@ chrono.ChCollisionModel.SetDefaultSuggestedEnvelope(0.05)
 chrono.ChCollisionModel.SetDefaultSuggestedMargin(0.005)
 
 # Import model items from Solidworks and add to system 
-# A list of minor differences of SW export
-######### cobra_4.py - does not include collision shapes
-######### cobra_4_2.py - includes manual addition of collison shape
 parts = chrono.ImportSolidWorksSystem(SWexportfilename)
 
 for item in parts:
@@ -78,55 +84,43 @@ bbody.SetFixed(False)
 b1arm = mysystem.SearchBody('arm_assembly-2')
 b1hub = mysystem.SearchBody('hub_assem-1')
 b1wheel = mysystem.SearchBody('wheel_grouser-1')
-# m1_steer_arm = b1arm.SearchMarker('steer_arm_1')
-# m1_steer_hub = mysystem.SearchMarker('steer_hub_1')
-# m1_drive_hub = mysystem.SearchMarker('drive_hub_1')
-# m1_drive_wheel = mysystem.SearchMarker('drive_wheel_1')
 # Rear Right Assembly
 b2arm = mysystem.SearchBody('arm_assembly-3')
 b2hub = mysystem.SearchBody('hub_assem-4')
 b2wheel = mysystem.SearchBody('wheel_grouser-3')
-# m2_steer_arm = mysystem.SearchMarker('steer_arm_2')
-# m2_steer_hub = mysystem.SearchMarker('steer_hub_2')
-# m2_drive_hub = mysystem.SearchMarker('drive_hub_2')
-# m2_drive_wheel = mysystem.SearchMarker('drive_wheel_2')
 # Front Left Assembly
 b3arm = mysystem.SearchBody('arm_assembly-1')
 b3hub = mysystem.SearchBody('hub_assem-3')
 b3wheel = mysystem.SearchBody('wheel_grouser-2')
-# m3_steer_arm = mysystem.SearchMarker('steer_arm_3')
-# m3_steer_hub = mysystem.SearchMarker('steer_hub_3')
-# m3_drive_hub = mysystem.SearchMarker('drive_hub_3')
-# m3_drive_wheel = mysystem.SearchMarker('drive_wheel_3')
 # Rear Left Assembly
 b4arm = mysystem.SearchBody('arm_assembly-4')
 b4hub = mysystem.SearchBody('hub_assem-2')
 b4wheel = mysystem.SearchBody('wheel_grouser-4')
-# m4_steer_arm = mysystem.SearchMarker('steer_arm_4')
-# m4_steer_hub = mysystem.SearchMarker('steer_hub_4')
-# m4_drive_hub = mysystem.SearchMarker('drive_hub_4')
-# m4_drive_wheel = mysystem.SearchMarker('drive_wheel_4')
+# Force locations/bodies
+# force1_bod = mysystem.SearchBody()
 
 
-
-
-# IF WHEEL COLLISIONS ARE ENABLED
+# =============================================================================
+# DISABLE COLLISION BETWEEN EACH WHEEL
+# =============================================================================
 b1wheel.GetCollisionModel().SetFamily(1)
 b3wheel.GetCollisionModel().SetFamily(2)
 b2wheel.GetCollisionModel().SetFamily(3)
 b4wheel.GetCollisionModel().SetFamily(4)
-
+# Disable wheel collision between wheel 1 and the rest
 b1wheel.GetCollisionModel().DisallowCollisionsWith(2)
 b1wheel.GetCollisionModel().DisallowCollisionsWith(3)
 b1wheel.GetCollisionModel().DisallowCollisionsWith(4)
-
+# Disable collsiion between wheel3 and the remaining
 b3wheel.GetCollisionModel().DisallowCollisionsWith(3)
 b3wheel.GetCollisionModel().DisallowCollisionsWith(4)
-
+# Disable collsiion between wheel2 and the remaining
 b2wheel.GetCollisionModel().DisallowCollisionsWith(4)
 
 
+# =============================================================================
 # STEERING ACTUATION SETUP
+# =============================================================================
 motorFR_steer = chrono.ChLinkMotorRotationAngle()
 jointFR_steer = mysystem.SearchLink('Concentric5')
 frameFR_steer = jointFR_steer.GetVisualModelFrame()
@@ -151,7 +145,9 @@ frameRL_steer = jointRL_steer.GetVisualModelFrame()
 motorRL_steer.Initialize(b4arm, b4hub, frameRL_steer)
 mysystem.Add(motorRL_steer)
 
+# =============================================================================
 # DRIVE ACTUATION SETUP
+# =============================================================================
 motorFR_drive = chrono.ChLinkMotorRotationSpeed()
 jointFR_drive = mysystem.SearchLink('Concentric6')
 frameFR_drive = jointFR_drive.GetVisualModelFrame()
@@ -177,7 +173,9 @@ motorRL_drive.Initialize(b4hub, b4wheel, frameRL_drive)
 mysystem.Add(motorRL_drive)
 
 
+# =============================================================================
 # Create a floor
+# =============================================================================
 mymat = chrono.ChContactMaterialSMC()
 mymat.SetRestitution(0.0)
 
@@ -188,47 +186,60 @@ mymat.SetRestitution(0.0)
 # mysystem.Add(mfloor)
 
 terrain = veh.SCMTerrain(mysystem)
+# straight line testing
+# terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(7.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
+# terrain.Initialize(16.0, 2*(1/2), 0.01*mesh_gain)
+# curved path testing
 
-terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(8,-0.2,0.4), chrono.QuatFromAngleX(-math.pi/2)))
-# terrain.Initialize(12.0, 5.0, 0.01)
-terrain.Initialize(16.0, 2.5, 0.01*(1/1))
+mesh_size = 0.01*mesh_gain
+print(f"mesh size: {mesh_size:.4f} m")
 
-# =============================================================================
-# # adjusted from default for single wheel test in SCM
-# terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
-#                            0,      # Bekker Kc
-#                            1.1,    # Bekker n exponent
-#                            0,      # Mohr cohesive limit (Pa)
-#                            30,     # Mohr friction limit (degrees)
-#                            0.01,   # Janosi shear coefficient (m)
-#                            4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-#                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-# )
-# =============================================================================
+if option_area == "turn":
+    terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(2.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
+    terrain.Initialize(6, 6, mesh_size)
+else:
+    terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(3,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
+    # terrain.Initialize(12.0, 5.0, 0.01)
+    terrain.Initialize(8, 1.5, mesh_size)
 
-# "Sandy Soil Values" from  drawbar pull tech rep
-terrain.SetSoilParameters(5e5,  # Bekker Kphi
-                           3e3,      # Bekker Kc
-                           1.1,    # Bekker n exponent
-                           0,      # Mohr cohesive limit (Pa)
-                           30,     # Mohr friction limit (degrees)
-                           0.01,   # Janosi shear coefficient (m)
-                           4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-                           3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-)
+# Soil Model Parameters
+if soilmdl == "custom":
+    print("Running custom soil model...")
+    # adjusted from default for single wheel test in SCM
+    terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
+                               0,      # Bekker Kc
+                               1.1,    # Bekker n exponent
+                               0,      # Mohr cohesive limit (Pa)
+                               30,     # Mohr friction limit (degrees)
+                               0.01,   # Janosi shear coefficient (m)
+                               4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
+elif soilmdl == "sand":
+    print("Running using sand soil model...")
+    # "Sandy Soil Values" from  drawbar pull tech rep
+    terrain.SetSoilParameters(5e5,  # Bekker Kphi
+                               3e3,      # Bekker Kc
+                               1.1,    # Bekker n exponent
+                               0,      # Mohr cohesive limit (Pa)
+                               30,     # Mohr friction limit (degrees)
+                               0.01,   # Janosi shear coefficient (m)
+                               4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
+elif soilmdl == "clay":
+    print("Running clay soil model...")
+    # "Clayley Soil Values" from  drawbar pull tech rep
+    terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
+                               20680,      # Bekker Kc
+                               1.0,    # Bekker n exponent
+                               3500,      # Mohr cohesive limit (Pa)
+                               11,     # Mohr friction limit (degrees)
+                               0.025,   # Janosi shear coefficient (m)
+                               7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
 
-# =============================================================================
-# # "Clayley Soil Values" from  drawbar pull tech rep
-# terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
-#                            20680,      # Bekker Kc
-#                            1.0,    # Bekker n exponent
-#                            3500,      # Mohr cohesive limit (Pa)
-#                            11,     # Mohr friction limit (degrees)
-#                            0.025,   # Janosi shear coefficient (m)
-#                            7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-#                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-# )
-# =============================================================================
 
 # enabling moving patches
 # terrain.AddMovingPatch(b1wheel, chrono.ChVector3d(0,0,0), chrono.ChVector3d(0.5, 1, 1))
@@ -283,17 +294,18 @@ t = 0
 # sys.exit()
 
 # Data export
-csv_filename = 'output_05_straight21s_60rpm_ClaySoil.csv'
+# csv_filename = 'output_05_straight21s_60rpm_ClaySoil.csv'
 # csv_filename = 'temptest_05.csv'
 # Create a new CSV file and write a header (optional)
 headers = ['t', 'x', 'y', 'z', 'dx', 'dy', 'dz', 'ddx', 'ddy', 'ddz', 'speed_set', 'steering_set',
-           'q0', 'q1', 'q2', 'q3', 'motFRTor', 'motRRTor', 'motFLTor','motRLTor']
+           'q0', 'q1', 'q2', 'q3', 'motFRTor', 'motRRTor', 'motFLTor','motRLTor', 'servFRTor', 'servRRTor', 'servFLTor','servRLTor']
 with open(csv_filename, mode='w', newline='') as file:
     writer = csv.writer(file)
     # header = [f'val{i+1}' for i in range(9)]
     writer.writerow(headers)
 
 while(vis.Run() ):
+    # vis.Quit()
 # while (True):
     vis.BeginScene()
     vis.Render()
@@ -317,15 +329,21 @@ while(vis.Run() ):
         last_displayed_time = rounded_time
     
     t = current_time
-    if t<1:
+    #  wait to stabilize
+    if t<0.5:
         speed_t = 0
         steering_t = 0
-    else:
-        speed_t = 60*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
-        steering_t = 30*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
+    # ramp up speed
+    elif 0.5 <= t < 1:
+        speed_t = 50*(1/60)*(2*math.pi)*(t-0.5)/0.5
         steering_t = 0
+    # full speed
+    else:
+        speed_t = 50*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
+        # steering_t = 20*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
+        steering_t = 20*(math.pi/180)
+        # steering_t = 0
     
- 
 
     control(speed = speed_t, steering = steering_t)
    
@@ -349,8 +367,11 @@ while(vis.Run() ):
     var4 = np.array([qrot.e0, qrot.e1, qrot.e2, qrot.e3])
     var5 = np.array([motorFR_drive.GetMotorTorque(), motorRR_drive.GetMotorTorque(),
                      motorFL_drive.GetMotorTorque(), motorRL_drive.GetMotorTorque()])
+    # torque for steering servos
+    var6 = np.array([motorFR_steer.GetMotorTorque(), motorRR_steer.GetMotorTorque(),
+                     motorFL_steer.GetMotorTorque(), motorRL_steer.GetMotorTorque()])
     
-    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4, var5))  # 1x9 array
+    combined = np.concatenate(([t], var1, var2, var3, [speed_t], [steering_t], var4, var5, var6))  # 1xn array
 
 
     # Append the data row to the CSV
@@ -360,8 +381,10 @@ while(vis.Run() ):
     
     vis.EndScene()
     
-    if t>21:
-        input("Pause as t=21s. Press Enter to END")
+    if t>t_final:
+        mean_RTF = elapsed_t/current_time
+        print(f"Avg RTF: {mean_RTF:.2f}")
+        input("Pause as t=5s. Press Enter to END")
         vis.Quit()
         sys.exit()
     
