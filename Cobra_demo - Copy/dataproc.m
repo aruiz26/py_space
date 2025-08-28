@@ -6,7 +6,7 @@ clear; clc; close all;
 %% Data parsing from csv
 
 % Read CSV file as a table (header will be used automatically)
-T = readtable('output_02_test_clay.csv');
+T = readtable('output_03_curve_20deg_5s_50rpm_Sand.csv');
 
 % Access each column by its name (from header)
 t = T.t;
@@ -46,7 +46,7 @@ catch
 end
 
 %%
-t1 = 1; % sim start time
+t1 = 0; % sim start time
 t = t - t1;  % adjusting time
 t1 = 0; % t1=1 was originally added to xlim, this is to adjust it
 

@@ -10,11 +10,12 @@ import csv
 import numpy as np
 
 ## Edit
-soilmdl = 'sand' # Options: custom, sand, soil
-# csv_filename = 'output_02_straight21s_50rpm_Clay_Soil.csv'
-csv_filename = 'output_04_2_sand_steer_curve.csv'
+soilmdl = "sand" # Options: custom, sand, clay
+csv_filename = 'output_03_curve_20deg_5s_50rpm_Sand.csv'
+# csv_filename = 'output_04_2_sand_steer_curve.csv'
 mesh_gain = (1/1) # higher==rougher mesh. def (1)
 t_final = 5 # Used 21 s for striaght line test
+option_area = "turn" # opt: "turn", "straight"
 ##
 
 print("Loading Cobra SW...")
@@ -117,7 +118,9 @@ b3wheel.GetCollisionModel().DisallowCollisionsWith(4)
 b2wheel.GetCollisionModel().DisallowCollisionsWith(4)
 
 
+# =============================================================================
 # STEERING ACTUATION SETUP
+# =============================================================================
 motorFR_steer = chrono.ChLinkMotorRotationAngle()
 jointFR_steer = mysystem.SearchLink('Concentric5')
 frameFR_steer = jointFR_steer.GetVisualModelFrame()
@@ -142,7 +145,9 @@ frameRL_steer = jointRL_steer.GetVisualModelFrame()
 motorRL_steer.Initialize(b4arm, b4hub, frameRL_steer)
 mysystem.Add(motorRL_steer)
 
+# =============================================================================
 # DRIVE ACTUATION SETUP
+# =============================================================================
 motorFR_drive = chrono.ChLinkMotorRotationSpeed()
 jointFR_drive = mysystem.SearchLink('Concentric6')
 frameFR_drive = jointFR_drive.GetVisualModelFrame()
@@ -168,7 +173,9 @@ motorRL_drive.Initialize(b4hub, b4wheel, frameRL_drive)
 mysystem.Add(motorRL_drive)
 
 
+# =============================================================================
 # Create a floor
+# =============================================================================
 mymat = chrono.ChContactMaterialSMC()
 mymat.SetRestitution(0.0)
 
@@ -183,48 +190,56 @@ terrain = veh.SCMTerrain(mysystem)
 # terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(7.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
 # terrain.Initialize(16.0, 2*(1/2), 0.01*mesh_gain)
 # curved path testing
-terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(2.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
-terrain.Initialize(6, 6, 0.01*mesh_gain)
-# terrain.Initialize(12.0, 5.0, 0.01)
-# terrain.Initialize(16.0, 2.5, 0.01*(1/1))
 
+mesh_size = 0.01*mesh_gain
+print(f"mesh size: {mesh_size:.4f} m")
 
-# =============================================================================
-# # adjusted from default for single wheel test in SCM
-# terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
-#                            0,      # Bekker Kc
-#                            1.1,    # Bekker n exponent
-#                            0,      # Mohr cohesive limit (Pa)
-#                            30,     # Mohr friction limit (degrees)
-#                            0.01,   # Janosi shear coefficient (m)
-#                            4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-#                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-# )
-# =============================================================================
+if option_area == "turn":
+    terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(2.5,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
+    terrain.Initialize(6, 6, mesh_size)
+else:
+    terrain.SetPlane(chrono.ChCoordsysd(chrono.ChVector3d(3,-0.2,0.0), chrono.QuatFromAngleX(-math.pi/2)))
+    # terrain.Initialize(12.0, 5.0, 0.01)
+    terrain.Initialize(8, 1.5, mesh_size)
 
-# "Sandy Soil Values" from  drawbar pull tech rep
-terrain.SetSoilParameters(5e5,  # Bekker Kphi
-                           3e3,      # Bekker Kc
-                           1.1,    # Bekker n exponent
-                           0,      # Mohr cohesive limit (Pa)
-                           30,     # Mohr friction limit (degrees)
-                           0.01,   # Janosi shear coefficient (m)
-                           4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-                           3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-)
+# Soil Model Parameters
+if soilmdl == "custom":
+    print("Running custom soil model...")
+    # adjusted from default for single wheel test in SCM
+    terrain.SetSoilParameters(0.2e8,  # Bekker Kphi
+                               0,      # Bekker Kc
+                               1.1,    # Bekker n exponent
+                               0,      # Mohr cohesive limit (Pa)
+                               30,     # Mohr friction limit (degrees)
+                               0.01,   # Janosi shear coefficient (m)
+                               4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
+elif soilmdl == "sand":
+    print("Running using sand soil model...")
+    # "Sandy Soil Values" from  drawbar pull tech rep
+    terrain.SetSoilParameters(5e5,  # Bekker Kphi
+                               3e3,      # Bekker Kc
+                               1.1,    # Bekker n exponent
+                               0,      # Mohr cohesive limit (Pa)
+                               30,     # Mohr friction limit (degrees)
+                               0.01,   # Janosi shear coefficient (m)
+                               4e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
+elif soilmdl == "clay":
+    print("Running clay soil model...")
+    # "Clayley Soil Values" from  drawbar pull tech rep
+    terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
+                               20680,      # Bekker Kc
+                               1.0,    # Bekker n exponent
+                               3500,      # Mohr cohesive limit (Pa)
+                               11,     # Mohr friction limit (degrees)
+                               0.025,   # Janosi shear coefficient (m)
+                               7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
+                               3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
+    )
 
-# =============================================================================
-# # "Clayley Soil Values" from  drawbar pull tech rep
-# terrain.SetSoilParameters(8.14e5,  # Bekker Kphi
-#                            20680,      # Bekker Kc
-#                            1.0,    # Bekker n exponent
-#                            3500,      # Mohr cohesive limit (Pa)
-#                            11,     # Mohr friction limit (degrees)
-#                            0.025,   # Janosi shear coefficient (m)
-#                            7.8e7,    # Elastic stiffness (Pa/m), before plastic yield, must be > Kphi
-#                            3e4     # Damping (Pa s/m), proportional to negative vertical speed (optional)
-# )
-# =============================================================================
 
 # enabling moving patches
 # terrain.AddMovingPatch(b1wheel, chrono.ChVector3d(0,0,0), chrono.ChVector3d(0.5, 1, 1))
@@ -314,13 +329,19 @@ while(vis.Run() ):
         last_displayed_time = rounded_time
     
     t = current_time
-    if t<1:
+    #  wait to stabilize
+    if t<0.5:
         speed_t = 0
         steering_t = 0
+    # ramp up speed
+    elif 0.5 <= t < 1:
+        speed_t = 50*(1/60)*(2*math.pi)*(t-0.5)/0.5
+        steering_t = 0
+    # full speed
     else:
         speed_t = 50*(1/60)*(2*math.pi) # RPM*(1min/60s)*(2pirad/1rev)
-        steering_t = 20*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
-        steering_t = 45*(math.pi/180)
+        # steering_t = 20*(math.pi/180)*math.sin( (t - 1)*(2*math.pi)*(1/4)) # 30deg(pi/180deg), 1rev every 4 seconds
+        steering_t = 20*(math.pi/180)
         # steering_t = 0
     
 
@@ -361,7 +382,9 @@ while(vis.Run() ):
     vis.EndScene()
     
     if t>t_final:
-        input("Pause as t=21s. Press Enter to END")
+        mean_RTF = elapsed_t/current_time
+        print(f"Avg RTF: {mean_RTF:.2f}")
+        input("Pause as t=5s. Press Enter to END")
         vis.Quit()
         sys.exit()
     
