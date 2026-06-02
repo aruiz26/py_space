@@ -1,0 +1,957 @@
+# Dump hierarchy from SolidWorks 
+# Assembly: M:\ruiza\Downloads\Cobra_CAD-SW2025\cobra_4_1_pyMarkers - Copy.SLDASM
+
+
+         -Comments [CommentsFolder]
+         -Favorites [FavoriteFolder]
+         -History [HistoryFolder]
+         -Selection Sets [SelectionSetFolder]
+         -Sensors [SensorFolder]
+         -Live Section Planes [LiveSectionFolder]
+         -Design Binder [DocsFolder]
+         -Annotations [DetailCabinet]
+           -Notes [NotesAreaFtrFolder]
+           -Notes1___EndTag___ [NotesAreaFtrFolder]
+         -Markups [InkMarkupFolder]
+         -Lights and Cameras [EnvFolder]
+           -Ambient [AmbientLight]
+           -Camera1 [CameraFeature]
+           -Directional3 [DirectionLight]
+           -Directional4 [DirectionLight]
+         -Simulation [AEMSimFeature]
+         -Equations [EqnFolder]
+         -Front Plane [RefPlane]
+         -Top Plane [RefPlane]
+         -Right Plane [RefPlane]
+         -Origin [OriginProfileFeature]
+         -CompCurve4 [CompositeCurve]
+         -CompCurve12 [CompositeCurve]
+         -CompCurve13 [CompositeCurve]
+         -CompCurve14 [CompositeCurve]
+         -CompCurve15 [CompositeCurve]
+         -CompCurve16 [CompositeCurve]
+         -CompCurve17 [CompositeCurve]
+         -CompCurve39 [CompositeCurve]
+         -CompCurve40 [CompositeCurve]
+         -CompCurve41 [CompositeCurve]
+         -CompCurve42 [CompositeCurve]
+         -CompCurve43 [CompositeCurve]
+         -CompCurve44 [CompositeCurve]
+         -CompCurve45 [CompositeCurve]
+         -Assem6^cobra_4_1_pyMarkers - Copy-1 [Reference]
+         -wheel_grouser-1 [Reference]
+         -wheel_grouser-2 [Reference]
+         -wheel_grouser-3 [Reference]
+         -wheel_grouser-4 [Reference]
+         -hub_assem-1 [Reference]
+         -arm_assembly-1 [Reference]
+         -arm_assembly-2 [Reference]
+         -arm_assembly-3 [Reference]
+         -arm_assembly-4 [Reference]
+         -hub_assem-2 [Reference]
+         -hub_assem-3 [Reference]
+         -hub_assem-4 [Reference]
+         -screw_force_mounts-1 [Reference]
+         -Mates [MateGroup]
+           -Unchangable [FtrFolder]
+           -Parallel27 [MateParallel]
+           -Parallel28 [MateParallel]
+           -Parallel29 [MateParallel]
+           -Folder2___EndTag___ [FtrFolder]
+           -Coincident199 [MateCoincident]
+           -Concentric5 [MateConcentric]
+           -Concentric6 [MateConcentric]
+           -Coincident200 [MateCoincident]
+           -Concentric7 [MateConcentric]
+           -Coincident201 [MateCoincident]
+           -Concentric8 [MateConcentric]
+           -Coincident202 [MateCoincident]
+           -Concentric9 [MateConcentric]
+           -Coincident203 [MateCoincident]
+           -Concentric10 [MateConcentric]
+           -Coincident204 [MateCoincident]
+           -Concentric11 [MateConcentric]
+           -Coincident205 [MateCoincident]
+           -Concentric12 [MateConcentric]
+           -Coincident206 [MateCoincident]
+           -Concentric25 [MateConcentric]
+           -Concentric26 [MateConcentric]
+           -Concentric27 [MateConcentric]
+           -Concentric28 [MateConcentric]
+           -Coincident231 [MateCoincident]
+           -Parallel23 [MateParallel]
+           -Coincident232 [MateCoincident]
+           -Parallel24 [MateParallel]
+           -Coincident233 [MateCoincident]
+           -Parallel25 [MateParallel]
+           -Coincident234 [MateCoincident]
+           -Parallel26 [MateParallel]
+           -Coincident243 [MateCoordinate]
+           -Coincident245 [MateCoincident]
+           -Coincident246 [MateCoincident]
+           -Coincident247 [MateCoincident]
+         -Point2 [RefPoint]
+         -Point4 [RefPoint]
+         -Point6 [RefPoint]
+         -Point8 [RefPoint]
+         -steer_arm_1 [CoordSys]
+         -steer_arm_2 [CoordSys]
+         -steer_arm_3 [CoordSys]
+         -steer_arm_4 [CoordSys]
+         -Point10 [RefPoint]
+         -Point12 [RefPoint]
+         -Point14 [RefPoint]
+         -Point16 [RefPoint]
+         -steer_hub_1 [CoordSys]
+         -steer_hub_2 [CoordSys]
+         -steer_hub_3 [CoordSys]
+         -steer_hub_4 [CoordSys]
+         -Point18 [RefPoint]
+         -Point20 [RefPoint]
+         -Point22 [RefPoint]
+         -Point24 [RefPoint]
+         -drive_hub_1 [CoordSys]
+         -drive_hub_2 [CoordSys]
+         -drive_hub_3 [CoordSys]
+         -drive_hub_4 [CoordSys]
+         -Point26 [RefPoint]
+         -Point28 [RefPoint]
+         -Point30 [RefPoint]
+         -Point32 [RefPoint]
+         -drive_wheel_1 [CoordSys]
+         -drive_wheel_2 [CoordSys]
+         -drive_wheel_3 [CoordSys]
+         -drive_wheel_4 [CoordSys]
+   +Assem6^cobra_4_1_pyMarkers - Copy-1 <Default>
+           -Comments [CommentsFolder]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-7 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1 <Default>
+             -Comments [CommentsFolder]
+             -91780A254_Female Threaded Hex Standoff-2 [ReferencePattern]
+             -91780A254_Female Threaded Hex Standoff-3 [ReferencePattern]
+             -91780A254_Female Threaded Hex Standoff-4 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-3 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-4 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-5 [ReferencePattern]
+             -93286A013_Aluminum Washer-2 [ReferencePattern]
+             -93286A013_Aluminum Washer-3 [ReferencePattern]
+             -93286A013_Aluminum Washer-4 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-6 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-7 [ReferencePattern]
+             -91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-8 [ReferencePattern]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91780A254_Female Threaded Hex Standoff-2 <91780A254>
+               -Comments [CommentsFolder]
+               -Sketch3 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91780A254_Female Threaded Hex Standoff-4 <91780A254>
+               -Comments [CommentsFolder]
+               -Sketch3 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-3 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91780A254_Female Threaded Hex Standoff-3 <91780A254>
+               -Comments [CommentsFolder]
+               -Sketch3 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-5 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/93286A013_Aluminum Washer-3 <93286A013>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/93286A013_Aluminum Washer-4 <93286A013>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-6 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-7 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-8 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-4 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/93286A013_Aluminum Washer-2 <93286A013>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/velodyne-vlp16.stp-1 <Default>
+               -Comments [CommentsFolder]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91780A254_Female Threaded Hex Standoff-1 <91780A254>
+               -Comments [CommentsFolder]
+               -Sketch3 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/lider and stuff plate-1 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-1 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/lidar_mount-1 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/93286A013_Aluminum Washer-1 <93286A013>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/4floor-1/91772A540_Passivated 18-8 Stainless Steel Pan Head Phillips Screw-2 <91772A540>
+               -Favorites [FavoriteFolder]
+               -Sketch2 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-2 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-4 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-8 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-3 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-1 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-5 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/5537T868_T-Slotted Framing-6 <5537T868>
+             -Comments [CommentsFolder]
+             -Sketch15 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1 <Default>
+             -Comments [CommentsFolder]
+             -80-20 Attachment Assy-14 [ReferencePattern]
+             -80-20 Attachment Assy-15 [ReferencePattern]
+             -80-20 Attachment Assy-16 [ReferencePattern]
+             -80-20 Attachment Assy-17 [ReferencePattern]
+             -80-20 Attachment Assy-18 [ReferencePattern]
+             -80-20 Attachment Assy-19 [ReferencePattern]
+             -80-20 Attachment Assy-20 [ReferencePattern]
+             -80-20 Attachment Assy-21 [ReferencePattern]
+             -80-20 Attachment Assy-22 [ReferencePattern]
+             -80-20 Attachment Assy-23 [ReferencePattern]
+             -80-20 Attachment Assy-24 [ReferencePattern]
+             -80-20 Attachment Assy-25 [ReferencePattern]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/Right-Left Side Tube-2 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/Front-Back Side Tube-2 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/Front-Back Side Tube-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/Right-Left Side Tube-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-1 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-1/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-2 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-2/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-3 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-3/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-4 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-1/80-20 Attachment Assy-4/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Vertical Tubes-1 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Vertical Tubes-3 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Vertical Tubes-4 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-4 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-4/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-2 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-2/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-3 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-3/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/Right-Left Side Tube-2 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/Front-Back Side Tube-2 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/Front-Back Side Tube-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/Right-Left Side Tube-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-1 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-1/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-2 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-2/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-2/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-3 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-3/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-4 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Frame Top-Bottom-2/80-20 Attachment Assy-4/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Vertical Tubes-2 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Battery-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-4 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-4/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-4/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Front-Back Side Tube-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-5 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-5/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-5/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-5/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Vertical Tubes-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Battery Mount-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Battery Bottom-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/Vertical Tubes-2 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-3 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-3/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-3/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-6 <Default>
+                 -Comments [CommentsFolder]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-6/5537T868_T-Slotted Framing-1 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-6/5537T868_T-Slotted Framing-2 <5537T868>
+                   -Comments [CommentsFolder]
+                   -Sketch15 [ProfileFeature]
+           +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/80-20 Attachment Assy-6/4119_wfeatures-1 <Default>
+                   -Comments [CommentsFolder]
+                   -Sketch1 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/Battery Mount Assy-1/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-1 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-1/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-1/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-11 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-11/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-11/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-11/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-13 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-13/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-13/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-13/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-6 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-6/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-6/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-6/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-12 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-12/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-12/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-12/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-5 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-5/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-5/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-5/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-7 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-7/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-7/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-7/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-8 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-8/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-8/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-8/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-10 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-10/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-10/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-10/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-25 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-25/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-25/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-25/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-20 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-20/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-20/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-20/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-21 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-21/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-21/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-21/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-19 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-19/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-19/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-19/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-23 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-23/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-23/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-23/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-18 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-18/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-18/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-18/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-22 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-22/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-22/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-22/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-17 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-17/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-17/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-17/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-24 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-24/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-24/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-24/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-16 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-16/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-16/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-16/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-15 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-15/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-15/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-15/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-14 <Default>
+               -Comments [CommentsFolder]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-14/5537T868_T-Slotted Framing-1 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-14/5537T868_T-Slotted Framing-2 <5537T868>
+                 -Comments [CommentsFolder]
+                 -Sketch15 [ProfileFeature]
+         +Assem6^cobra_4_1_pyMarkers - Copy-1/Frame Assy-1/80-20 Attachment Assy-14/4119_wfeatures-1 <Default>
+                 -Comments [CommentsFolder]
+                 -Sketch1 [ProfileFeature]
+     +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1 <Default>
+             -Comments [CommentsFolder]
+             -slide_sup-7 [ReferencePattern]
+             -slide_sup-8 [ReferencePattern]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-7 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-17 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-8 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/panel-2 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-16 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/panel-3 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/panel-1 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-15 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/sidebar-3 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/slide_sup-2 <Default>
+               -Comments [CommentsFolder]
+               -Sketch2 [ProfileFeature]
+       +Assem6^cobra_4_1_pyMarkers - Copy-1/enclosure-1/sidebar-1 <Default>
+               -Comments [CommentsFolder]
+               -Sketch1 [ProfileFeature]
+   +wheel_grouser-2 <Default>
+           -Comments [CommentsFolder]
+     +wheel_grouser-2/wheel_final-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch4 [ProfileFeature]
+     +wheel_grouser-2/wheel_hub_2-1 <Flat Spokes>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +arm_assembly-3 <Default>
+           -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7 NyLock-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/DS3225MG Servo 25Kg 4.8-6.8V-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/bearings_mounts_lock_3-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +arm_assembly-3/M4x0.7x35mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7x35mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7x35mm SHCS-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/Steering Arm-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +arm_assembly-3/M4x0.7x35mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7 NyLock-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7 NyLock-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/M4x0.7 NyLock-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-3/bearings-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +hub_assem-2 <Default>
+           -Comments [CommentsFolder]
+     +hub_assem-2/M6x1x30mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-2/M6x1x30mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-2/Strut-2 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +hub_assem-2/PN01007-38.iges-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +hub_assem-2/M6x1x30mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-2/Wheel Hub_n2-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +wheel_grouser-1 <Default>
+           -Comments [CommentsFolder]
+     +wheel_grouser-1/wheel_final-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch4 [ProfileFeature]
+     +wheel_grouser-1/wheel_hub_2-1 <Flat Spokes>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +wheel_grouser-3 <Default>
+           -Comments [CommentsFolder]
+     +wheel_grouser-3/wheel_final-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch4 [ProfileFeature]
+     +wheel_grouser-3/wheel_hub_2-1 <Flat Spokes>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +wheel_grouser-4 <Default>
+           -Comments [CommentsFolder]
+     +wheel_grouser-4/wheel_final-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch4 [ProfileFeature]
+     +wheel_grouser-4/wheel_hub_2-1 <Flat Spokes>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +arm_assembly-1 <Default>
+           -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7 NyLock-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/DS3225MG Servo 25Kg 4.8-6.8V-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/bearings_mounts_lock_3-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +arm_assembly-1/M4x0.7x35mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7x35mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7x35mm SHCS-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/Steering Arm-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +arm_assembly-1/M4x0.7x35mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7 NyLock-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7 NyLock-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/M4x0.7 NyLock-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-1/bearings-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +hub_assem-1 <Default>
+           -Comments [CommentsFolder]
+     +hub_assem-1/M6x1x30mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-1/M6x1x30mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-1/Strut-2 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +hub_assem-1/PN01007-38.iges-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +hub_assem-1/M6x1x30mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-1/Wheel Hub_n2-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +arm_assembly-2 <Default>
+           -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7 NyLock-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/DS3225MG Servo 25Kg 4.8-6.8V-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/bearings_mounts_lock_3-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +arm_assembly-2/M4x0.7x35mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7x35mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7x35mm SHCS-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/Steering Arm-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +arm_assembly-2/M4x0.7x35mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7 NyLock-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7 NyLock-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/M4x0.7 NyLock-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-2/bearings-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +arm_assembly-4 <Default>
+           -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7 NyLock-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/DS3225MG Servo 25Kg 4.8-6.8V-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/bearings_mounts_lock_3-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +arm_assembly-4/M4x0.7x35mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7x35mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7x35mm SHCS-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/Steering Arm-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +arm_assembly-4/M4x0.7x35mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7 NyLock-2 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7 NyLock-3 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/M4x0.7 NyLock-4 <Default>
+             -Comments [CommentsFolder]
+     +arm_assembly-4/bearings-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +hub_assem-3 <Default>
+           -Comments [CommentsFolder]
+     +hub_assem-3/M6x1x30mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-3/M6x1x30mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-3/Strut-2 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +hub_assem-3/PN01007-38.iges-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +hub_assem-3/M6x1x30mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-3/Wheel Hub_n2-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +hub_assem-4 <Default>
+           -Comments [CommentsFolder]
+     +hub_assem-4/M6x1x30mm SHCS-1 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-4/M6x1x30mm SHCS-2 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-4/Strut-2 <Default>
+             -Comments [CommentsFolder]
+             -Sketch2 [ProfileFeature]
+     +hub_assem-4/PN01007-38.iges-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +hub_assem-4/M6x1x30mm SHCS-3 <Default>
+             -Comments [CommentsFolder]
+     +hub_assem-4/Wheel Hub_n2-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+   +screw_force_mounts-1 <Default>
+           -Comments [CommentsFolder]
+     +screw_force_mounts-1/1_4-20_screw-1 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]
+     +screw_force_mounts-1/1_4-20_screw-2 <Default>
+             -Comments [CommentsFolder]
+             -Sketch1 [ProfileFeature]

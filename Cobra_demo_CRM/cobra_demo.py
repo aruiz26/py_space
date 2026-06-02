@@ -1,14 +1,5 @@
-'''
-Based of spiderRobot example SW_ex/demo_SW_spider_robot.py
-and pychrono_ex/scm__singlewheel.py
-
-This and other files were originally written using pychrono 9.0.0
-
-Now moving to pychrono 10.0.0
-
-
-'''
-
+# based of spiderRobot example SW_ex/demo_SW_spider_robot.py
+# and pychrono_ex/scm__singlewheel.py
 import pychrono.core as chrono
 import pychrono.irrlicht as chronoirr
 import pychrono.vehicle as veh
@@ -21,8 +12,9 @@ import numpy as np
 ## Edit
 soilmdl = "sand" # Options: custom, sand, clay
 csv_filename = 'output_03_curve_20deg_5s_50rpm_Sand.csv'
+csv_filename = 'test.csv'
 # csv_filename = 'output_04_2_sand_steer_curve.csv'
-mesh_gain = (1/1) # higher -> rougher mesh. def (1)
+mesh_gain = (1/1) # higher==rougher mesh. def (1)
 t_final = 5 # Used 21 s for striaght line test
 option_area = "turn" # opt: "turn", "straight"
 ##
